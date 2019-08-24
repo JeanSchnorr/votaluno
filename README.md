@@ -37,3 +37,5 @@ Para desativar uma virtualenv utilizamos o comando **_desactivate_**.
 Com a virtualenv ativada, podemos instalar os pacotes necessários do projeto utilizando o próprio PIP.
 Agora, instalamos o pacote Django, em sua versão mais atual, na virtualenv do projeto “projeto_python”.
 Agora, se precisarmos instalar uma outra versão do Django em outro projeto, bastaria criar uma nova virtualenv e realizar o mesmo processo.
+
+### Essas e outras dicas eu encontrei no site [**_Medium_**](https://medium.com/@raullesteves/github-como-fazer-um-readme-md-bonit%C3%A3o-c85c8f154f8)
