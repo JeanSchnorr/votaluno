@@ -31,7 +31,7 @@ O comando acima irá ativar a virutalenv e teremos um retorno similar ao ilustra
 Note que o nome da virtualenv, agora, é exibido antes do caminho do diretório em que estamos. Isso indica que a virtualenv foi ativada com sucesso.
 
 # **Desativando uma virtualenv**
-Para desativar uma virtualenv utilizamos o comando >~**deactivate**~.
+Para desativar uma virtualenv utilizamos o comando **_desactivate_**.
 
 # **Instalando pacotes**
 Com a virtualenv ativada, podemos instalar os pacotes necessários do projeto utilizando o próprio PIP.
