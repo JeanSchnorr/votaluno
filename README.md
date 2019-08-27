@@ -39,3 +39,5 @@ Agora, instalamos o pacote Django, em sua versão mais atual, na virtualenv do p
 Agora, se precisarmos instalar uma outra versão do Django em outro projeto, bastaria criar uma nova virtualenv e realizar o mesmo processo.
 
 ### Essas e outras dicas eu encontrei no site [**_TreinaWeb_**](https://www.treinaweb.com.br/blog/criando-ambientes-virtuais-para-projetos-python-com-o-virtualenv/)
+
+### [Aprendendo Django](https://data-flair.training/blogs/django-architecture/)
