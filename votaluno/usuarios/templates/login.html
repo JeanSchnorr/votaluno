@@ -1,0 +1,27 @@
+{% extends 'base_login.html' %}
+{% load staticfiles %}
+{% block body %}
+    <h1>titulo login</h1>
+    <div class="form-content d-flex justify-content-center align-items-center">
+        <form  method="POST" role="form" class="form-container p-4 bg-white rounded shadow-sm">
+            {% csrf_token %}    
+            <div class="mb-4">
+                <h1 class="text-dark font-weight-normal">Login</h1>
+                <p class="text-secondary">Por favor realize o login para que possa acessar o sistema.</p>
+            </div>
+            <fieldset>
+                <div>
+                    {% for field in form %}
+                        {{field.label_tag}}
+                        {{field}}
+                        {{field.errors}}
+                    {% endfor %}
+                </div>
+            </fieldset>
+            
+            <button class="btn btn-lg btn-primary btn-block mb-2 bg-primary" type="submit" value="Entrar">Entrar</button>
+        
+            <input type="hidden" name="next" value="{{ next }}">
+        </form>
+    </div>
+{% endblock %}
