@@ -1,5 +1,7 @@
 {% extends 'base.html' %}
 {% block body %}
-    <a href=" {% url 'sair' %} ">Sair ({{ user }}) </a>
+    {% if user.is_authenticated %}
+    <p><a href="{% url 'sair' %}">logout ({{user}})</a></p>
     <h1>home : logado</h1>
+    {% endif %}
 {% endblock %}
