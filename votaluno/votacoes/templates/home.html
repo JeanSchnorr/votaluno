@@ -1,7 +1,23 @@
 {% extends 'base.html' %}
 {% block body %}
-    {% if user.is_authenticated %}
-    <p><a href="{% url 'sair' %}">logout ({{user}})</a></p>
-    <h1>home : logado</h1>
-    {% endif %}
+    <ul class="nav flex-column">
+        <li class="nav-item">
+            <a class="nav-link active"  href="{% url 'home' %}"><img class="img-fluid my-2 align-self-center" src="{% static 'images/logo-votaluno.svg' %}" alt="Logo sistema" width="90%" ></a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link active"  href="{% url 'sair' %}">logout ({{user}})</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#">Link</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#">Link</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+        </li>
+    </ul>
+    <div class="container-fluid p-0 green">
+        as
+    </div>
 {% endblock %}

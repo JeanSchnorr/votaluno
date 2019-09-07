@@ -5,16 +5,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Home votAluno</title>
+    <link rel="shortcut icon" href="{% static 'images/favicon-logo.ico' %}" />
+    <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+    <script src="{% static 'js/bootstrap.js' %}"></script>
+    <title>votAluno</title>
 </head>
-<body>
-    
-       
-    
-    <h1> base</h1>
-
+   
+<body class="d-flex justify-content-left bg-light" style="min-height: 100vh">
     {% block body %}
-    {% endblock %} 
-
+    {% endblock %}
 </body>
 </html>

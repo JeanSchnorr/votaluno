@@ -5,9 +5,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="shortcut icon" href="{% static 'images/favicon-logo.ico' %}" />
     <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+    <script src="{% static 'js/bootstrap.js' %}"></script>
     <title>Login votAluno</title>
-
 </head>
    
 <body class="d-flex justify-content-center align-items-center bg-light" style="min-height: 100vh">
@@ -24,8 +25,10 @@
         </div>
         {% endfor %}
         {% if form.errors %}
-            <div class="alert alert-danger" role="alert">
-                <p>Seu nome de usuário e senha não coincidem. Por favor, tente novamente. Note que ambos os campos diferenciam maiúsculas e minúsculas.</p>
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">                
+                <p class="alert-link">Seu nome de usuário e senha não coincidem. Por favor, tente novamente.</p>
+                <hr>
+                <p class="alert-link">Note que ambos os campos diferenciam maiúsculas e minúsculas.</p>
             </div>
         {% endif %}
         <button class="btn btn-lg btn-info" type="submit" value="Entrar">ENTRAR</button>
