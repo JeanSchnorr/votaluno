@@ -12,6 +12,25 @@
 </head>
    
 <body class="d-flex justify-content-left bg-light" style="min-height: 100vh">
+    <ul class="nav flex-column" style="background-color: #212121;">
+        <li class="nav-item">
+            <a class="nav-link active"  href="{% url 'home' %}"><img class="img-fluid my-2 align-self-center" style="max-width: 200px;" src="{% static 'images/logo-votaluno-verde.svg' %}" alt="Logo sistema"></a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link active"  href="{% url 'sair' %}">logout ({{user}})</a>
+        </li>
+        {% if user.is_superuser %}
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'admin' %}">Acessar Administração</a>
+            </li>
+        {% endif %}
+        <li class="nav-item">
+            <a class="nav-link" href="#">Link</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+        </li>
+    </ul>
     {% block body %}
     {% endblock %}
 </body>

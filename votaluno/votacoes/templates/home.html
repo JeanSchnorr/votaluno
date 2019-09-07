@@ -1,23 +1,7 @@
 {% extends 'base.html' %}
+{% load staticfiles %}
 {% block body %}
-    <ul class="nav flex-column">
-        <li class="nav-item">
-            <a class="nav-link active"  href="{% url 'home' %}"><img class="img-fluid my-2 align-self-center" src="{% static 'images/logo-votaluno.svg' %}" alt="Logo sistema" width="90%" ></a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link active"  href="{% url 'sair' %}">logout ({{user}})</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="#">Link</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="#">Link</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
-        </li>
-    </ul>
-    <div class="container-fluid p-0 green">
-        as
+
+    <div class="container-fluid" style="min-height: 100vh; background-color: #b3b3b3;">
     </div>
 {% endblock %}
