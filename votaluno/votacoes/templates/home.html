@@ -1,7 +1,21 @@
 {% extends 'base.html' %}
 {% load staticfiles %}
 {% block body %}
-
-    <div class="container-fluid" style="min-height: 100vh; background-color: #b3b3b3;">
+    <div class="title">
+        Analytics
+    </div>
+    <div class="main">
+        <div class="widget">
+            <div class="title">Number of views</div>
+            <div class="chart"></div>
+        </div>
+        <div class="widget">
+            <div class="title">Number of likes</div>
+            <div class="chart"></div>
+        </div>
+        <div class="widget">
+            <div class="title">Number of comments</div>
+            <div class="chart"></div>
+        </div>
     </div>
 {% endblock %}

@@ -1,37 +1,106 @@
 {% load staticfiles %}
 <!DOCTYPE html>
-<html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="shortcut icon" href="{% static 'images/favicon-logo.ico' %}" />
-    <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
-    <script src="{% static 'js/bootstrap.js' %}"></script>
-    <title>votAluno</title>
-</head>
-   
-<body class="d-flex justify-content-left bg-light" style="min-height: 100vh">
-    <ul class="nav flex-column" style="background-color: #212121;">
-        <li class="nav-item">
-            <a class="nav-link active"  href="{% url 'home' %}"><img class="img-fluid my-2 align-self-center" style="max-width: 200px;" src="{% static 'images/logo-votaluno-verde.svg' %}" alt="Logo sistema"></a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link active"  href="{% url 'sair' %}">logout ({{user}})</a>
-        </li>
-        {% if user.is_superuser %}
-            <li class="nav-item">
-                <a class="nav-link" href="{% url 'admin' %}">Acessar Administração</a>
-            </li>
-        {% endif %}
-        <li class="nav-item">
-            <a class="nav-link" href="#">Link</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
-        </li>
-    </ul>
-    {% block body %}
-    {% endblock %}
-</body>
+<html>
+	<head>
+		<meta charset="utf-8">
+	    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    	<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>votAluno:</title>
+        <link rel="shortcut icon" href="{% static 'images/favicon-logo.ico' %}" />
+        <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:700, 600,500,400,300' rel='stylesheet' type='text/css'>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+		<link rel="stylesheet" href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+		<link rel="stylesheet" href="{% static 'css/menu.css' %}">
+		<link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+
+		<script src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
+		<script src="https://code.highcharts.com/highcharts.js"></script>
+		<script src="https://code.highcharts.com/modules/data.js"></script>
+		<script src="{% static 'js/menu.js' %}"></script>
+
+		<style>
+			.ad {
+				position: absolute;
+				width: 300px;
+				height: 250px;
+				border: 1px solid #ddd;
+				left: 50%;
+				transform: translateX(-50%);
+				top: 250px;
+				z-index: 10;
+			}
+			.ad .close {
+				position: absolute;
+				font-family: 'ionicons';
+				width: 20px;
+				height: 20px;
+				color: #fff;
+				background-color: #999;
+				font-size: 20px;
+				left: -20px;
+				top: -1px;
+				display: table-cell;
+				vertical-align: middle;
+				cursor: pointer;
+				text-align: center;
+			}
+		</style>
+		<script type="text/javascript">
+			$(function() {
+				$('.close').click(function() {
+					$('.ad').css('display', 'none');
+				})
+			})
+		</script>
+
+	</head>
+	<body>
+		<div class="header">
+            <div class="logo d-flex p-2 m-0 align-items-center justify-content-center">
+                    <img src="{% static 'images/logo-votaluno-verde.svg' %}" style="max-height:100%;" alt="">
+            </div>
+			<a href="#" class="nav-trigger"><span></span></a>
+		</div>
+		<div class="side-nav">
+			<div class="logo d-flex p-2 m-0 align-items-center justify-content-center">
+				<img src="{% static 'images/logo-votaluno-verde.svg' %}" style="max-height:100%;" alt="">
+			</div>
+			<nav>
+				<ul>
+					<li>
+						<a href="#">
+							<span><i class="fas fa-address-book"></i></span>
+							<span>Meus Alunos</span>
+						</a>
+					</li>
+					<li>
+						<a href="#">
+
+							<span><i class="fa fa-envelope"></i></span>
+							<span>Messages</span>
+						</a>
+					</li>
+					<li class="active">
+						<a href="#">
+							<span><i class="fa fa-bar-chart"></i></span>
+							<span>Analytics</span>
+						</a>
+					</li>
+					<li>
+						<a href="#">
+							<span><i class="fa fa-credit-card-alt"></i></span>
+							<span>Payments</span>
+						</a>
+					</li>
+                </ul>
+                <div class="">
+                    <a class="nav-link active"  href="{% url 'sair' %}"><span>Sair </span>({{user}})</a>
+                </div>
+			</nav>
+		</div>
+		<div class="main-content">
+			{% block body %}
+			{% endblock %}
+		</div>
+	</body>
 </html>
