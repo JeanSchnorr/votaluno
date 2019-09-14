@@ -44,12 +44,12 @@ class AvaliacaoTurma(models.Model):
         return f'{self.turma} - {self.usuario}'
     
 class Conselho(models.Model):
-    turma = models.ForeignKey(Turma, on_delete=models.CASCADE)
+    turma = models.ForeignKey("Turma", on_delete=models.CASCADE)
     data = models.DateField(auto_now=False)
     situacao = models.BooleanField(default=False)
     
     def __str__(self):
-        return self.turma
+        return f'{self.turma} - {self.data}'
 
 class Votacao(models.Model):
     aluno = models.ForeignKey(Aluno, on_delete=models.CASCADE)
