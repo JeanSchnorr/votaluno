@@ -21,8 +21,8 @@ class AvaliacaoAluno(models.Model):
     usuario = models.ForeignKey(User, on_delete=models.CASCADE)
     aluno = models.ForeignKey("Aluno", on_delete=models.CASCADE)
     bimestre = models.IntegerField()
-    #ano
-    
+    ano = models.IntegerField()
+        
     class Meta:
         verbose_name = 'Avaliação de aluno'
         verbose_name_plural = 'Avaliações de alunos'
@@ -34,14 +34,14 @@ class AvaliacaoTurma(models.Model):
     usuario = models.ForeignKey(User, on_delete=models.CASCADE)
     turma = models.ForeignKey("Turma", on_delete=models.CASCADE)
     bimestre = models.IntegerField()
-    #ano
+    ano = models.IntegerField()
     
     class Meta:
         verbose_name = 'Avaliação de turma'
         verbose_name_plural = 'Avaliações de turmas'
 
     def __str__(self):
-        return f'{self.aluno} - {self.usuario}'
+        return f'{self.turma} - {self.usuario}'
     
 class Conselho(models.Model):
     turma = models.ForeignKey(Turma, on_delete=models.CASCADE)
