@@ -17,15 +17,28 @@ class Aluno(models.Model):
     def __str__(self):
         return self.nome
 
-class Avaliacao(models.Model):
+class AvaliacaoAluno(models.Model):
     usuario = models.ForeignKey(User, on_delete=models.CASCADE)
     aluno = models.ForeignKey("Aluno", on_delete=models.CASCADE)
     bimestre = models.IntegerField()
     #ano
     
     class Meta:
-        verbose_name = 'Avaliação'
-        verbose_name_plural = 'Avaliações'
+        verbose_name = 'Avaliação de aluno'
+        verbose_name_plural = 'Avaliações de alunos'
+
+    def __str__(self):
+        return f'{self.aluno} - {self.usuario}'
+    
+class AvaliacaoTurma(models.Model):
+    usuario = models.ForeignKey(User, on_delete=models.CASCADE)
+    turma = models.ForeignKey("Turma", on_delete=models.CASCADE)
+    bimestre = models.IntegerField()
+    #ano
+    
+    class Meta:
+        verbose_name = 'Avaliação de turma'
+        verbose_name_plural = 'Avaliações de turmas'
 
     def __str__(self):
         return f'{self.aluno} - {self.usuario}'
