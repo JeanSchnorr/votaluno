@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block body %}
+<h2 style="margin-top:.8em;">Minhas Avaliações de Turma</h2>
+<div class="section-2">
+    <div class="mt-3 mb-3 table-holder rounded shadow-sm">
+        <h3>Lançar nova avaliação</h3>
+        <form action="{% url 'criarAvaliacaoTurma' user%}" method="POST" role="form">
+            {% csrf_token %}    
+            {% for field in form %}
+                <div class="py-2">
+                    {{field}}
+                    {{field.errors}}
+                </div>
+            {% endfor %}
+            {% if form.errors %}
+                <div class="alert alert-danger alert-dismissible fade show" role="alert">                
+                    <p class="alert-link">Seu nome de usuário e senha não coincidem. Por favor, tente novamente.</p>
+                    <hr>
+                    <p class="alert-link">Note que ambos os campos diferenciam maiúsculas e minúsculas.</p>
+                </div>
+            {% endif %}
+            <button class="btn btn-lg btn-info" type="submit" value="Entrar">Lançar</button>
+            <input type="hidden" name="next" value="{{ next }}">
+        </form>
+    </div>
+    <div class="mt-3 mb-3 table-holder rounded shadow-sm">
+        <h3>Últimas Avaliações Lançadas</h3>
+        {% if avaliacoes %}
+            <table>
+                <tbody>
+                    <tr>
+                    <th>Turma</th>
+                    <th>Referente ao</th>
+                    </tr> 
+                    {% for AvaliacaoTurma in avaliacoes %}
+                        <tr>
+                        <td>{{AvaliacaoTurma}}</td>
+                        <td>{{AvaliacaoTurma.bimestre}}º Bimestre de {{AvaliacaoTurma.ano}}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        {% else %}
+            <p>Não há avaliações para exibir</p>
+        {% endif %}
+    
+    </div>
+</div>
+<div class="box">
+   
+</div>
+{% endblock %}

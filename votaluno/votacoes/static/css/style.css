@@ -71,6 +71,7 @@
 
 .sidebar p {
     margin: .2em 0;
+    font-size: 1.2em;
 }
 
 .sidebar a {
@@ -79,7 +80,7 @@
     margin: .2em 0;
     margin-left: 1.5em;
     font-weight: 600;
-    font-size: .9em;
+    font-size: 1em;
 }
 
 .sidebar a:hover {

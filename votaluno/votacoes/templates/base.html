@@ -25,24 +25,23 @@
         </nav>
     </header>
     <main class="main">
-        <!-- A sidebar aparece por padrão no layout web e é acessada pelo menu sanduíche no mobile (através da nav) -->
         <div class="sidebar shadow-sm" id="sidebar">
             <img src="{% static 'images/logo-votaluno-branco.svg' %}" alt="">
             <nav>
-                <p>Usuario</p>
-                <a href="/">Criar</a>
+                <p>Avaliações</p>
+                <a href="{% url 'avaliacoesTurmas' %}">Avaliacoes de Turmas</a>
+                <a href="/">Avaliacoes de Alunos</a>
                 {% if user.is_superuser%}
                     <a href="{% url 'admin:index' %}">Gerenciar</a>
                 {% endif %}
                 <a href="{% url 'sair' %}">Sair</a>
             </nav>
-            <p class="credit m-0">2019 - Dashboard by Arthur Vinícus</p>
+            <p class="credit m-0">2019 - </p>
         </div>
         <div class="content d-flex flex-column" id="content">
-            <h2>Dashboard</h2>
-                {% block body %}
-                {% endblock body %}
-            </div>
+            {% block body %}
+            {% endblock body %}
+        </div>
     </main>
 
     <script src="{% static 'js/sidebar.js' %}"></script>

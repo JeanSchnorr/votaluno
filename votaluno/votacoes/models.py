@@ -42,7 +42,7 @@ class AvaliacaoTurma(models.Model):
         verbose_name_plural = 'Avaliações de turmas'
 
     def __str__(self):
-        return f'{self.turma} - {self.usuario}'
+        return f'{self.turma}'
     
 class Conselho(models.Model):
     turma = models.ForeignKey("Turma", on_delete=models.CASCADE)
