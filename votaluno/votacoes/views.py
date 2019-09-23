@@ -10,7 +10,7 @@ def home(request):
 
 def avaliacoesTurmas(request):
   context = {}
-  turmasSemAvaliacoes = Turma.objects.filter()
+  turmas = Turma.objects.filter()
   avaliacoes = AvaliacaoTurma.objects.filter(usuario=request.user)[:10]
   context['avaliacoes'] = avaliacoes
   return render(request,'avaliacoes/avaliacoesTurmas.html',context)
