@@ -8,11 +8,7 @@
         <form  method="POST" role="form">
             {% csrf_token %} 
             <div>
-                <select name="turma" id="turma">
-                    {% for Turma in turmas %}
-                        <option value="{{Turma.id}}">{{Turma}}</option>
-                    {% endfor %}
-                </select>
+            
             </div>
             <button class="btn btn-lg btn-info my-2" type="submit" value="Lancar">Lançar</button>
         </form>

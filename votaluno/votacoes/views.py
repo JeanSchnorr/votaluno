@@ -1,7 +1,7 @@
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponseRedirect
 from django.contrib.auth.models import User
-from .models import Aluno, AvaliacaoTurma, Turma
+from .models import Aluno, AvaliacaoTurma, Turma, OfertaDisciplina
 from django.shortcuts import render
 
 @login_required
@@ -10,8 +10,10 @@ def home(request):
 
 def avaliacoesTurmas(request):
   context = {}
-  turmas = Turma.objects.filter()
-  avaliacoes = AvaliacaoTurma.objects.filter(usuario=request.user)[:10]
+  
+  ofertasDisciplinas= OfertaDisciplina.objects.filter(professor=request.user)
+  
+  avaliacoes = AvaliacaoTurma.objects.filter(oferta_disciplina=ofertasDisciplinas)[:10]
   context['avaliacoes'] = avaliacoes
   return render(request,'avaliacoes/avaliacoesTurmas.html',context)
 
