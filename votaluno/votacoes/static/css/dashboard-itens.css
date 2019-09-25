@@ -55,7 +55,8 @@
 }
 
 .table-holder {
-    width: 59%;
+    z-index: -2 !important;
+    width: 59% !important;
     background-color: #f5f5f5;
 }
 
@@ -92,13 +93,8 @@
     border-left: 2px solid #ebebeb;
 }
 
-
-.table-holder tr:nth-child(odd):hover {
-    background-color: #5e35b19d;
-}
-
-.table-holder tr:nth-child(even):hover {
-    background-color: #ff6f269d;
+.table-holder tr:hover {
+    background-color: #78cc83;
 }
 
 

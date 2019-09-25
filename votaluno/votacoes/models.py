@@ -29,7 +29,7 @@ class OfertaDisciplina(models.Model):
     disciplina = models.ForeignKey(Disciplina, on_delete=models.CASCADE)
 
     def __str__(self):
-        return f'{self.disciplina} - {self.professor}'
+        return f'{self.disciplina}'
 
 class Aluno(models.Model):
     nome = models.TextField(max_length=50)
@@ -41,11 +41,11 @@ class Aluno(models.Model):
         return self.nome
 
 class AvaliacaoAluno(models.Model):
-    
     oferta_disciplina = models.ForeignKey(OfertaDisciplina, on_delete=models.CASCADE)
     aluno = models.ForeignKey("Aluno", on_delete=models.CASCADE)
     bimestre = models.PositiveIntegerField(choices=CHOICES_BIMESTRE)
-    ano = models.IntegerField()
+    ano = models.PositiveIntegerField()
+    status = models.BooleanField(default=True)
         
     class Meta:
         verbose_name = 'Avaliação de aluno'
@@ -55,17 +55,17 @@ class AvaliacaoAluno(models.Model):
         return f'{self.aluno} - {self.oferta_disciplina}'
     
 class AvaliacaoTurma(models.Model):
-    ofertaDisciplina = models.ForeignKey(OfertaDisciplina, on_delete=models.CASCADE)
-    turma = models.ForeignKey(Turma, on_delete=models.CASCADE)
+    oferta_disciplina = models.ForeignKey(OfertaDisciplina, on_delete=models.CASCADE)
     bimestre = models.PositiveIntegerField(choices=CHOICES_BIMESTRE)
     ano = models.PositiveIntegerField()
+    status = models.BooleanField(default=True)
     
     class Meta:
         verbose_name = 'Avaliação de turma'
         verbose_name_plural = 'Avaliações de turmas'
 
     def __str__(self):
-        return f'{self.turma}'
+        return f'{self.oferta_disciplina.turma}'
     
 class Conselho(models.Model):
     turma = models.ForeignKey("Turma", on_delete=models.CASCADE)

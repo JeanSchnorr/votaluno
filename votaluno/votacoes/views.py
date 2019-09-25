@@ -10,10 +10,12 @@ def home(request):
 
 def avaliacoesTurmas(request):
   context = {}
-  
-  ofertasDisciplinas= OfertaDisciplina.objects.filter(professor=request.user)
-  
-  avaliacoes = AvaliacaoTurma.objects.filter(oferta_disciplina=ofertasDisciplinas)[:10]
+  avaliacoes=[]
+  ofertas = OfertaDisciplina.objects.filter(professor=request.user)
+  for oferta in ofertas:
+    avaliacoesDisciplina = AvaliacaoTurma.objects.filter(oferta_disciplina=oferta).filter(status=True)[0]
+    avaliacoes.append(avaliacoesDisciplina)
+
   context['avaliacoes'] = avaliacoes
   return render(request,'avaliacoes/avaliacoesTurmas.html',context)
 
