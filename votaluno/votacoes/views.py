@@ -22,7 +22,9 @@ def avaliacoesTurmas(request):
 def criarAvaliacaoTurma(request,avaliacao_id):
   context = {}
   avaliacao = AvaliacaoTurma.objects.get(avaliacaoTurma.id=avaliacao_id)
-  return render(request,'avaliacoes/avaliarTurma.html')
+
+  context['avaliacao'] = avaliacao
+  return render(request,'avaliacoes/avaliarTurma.html', context)
 
 def admin(request):
   return HttpResponseRedirect('/admin')
