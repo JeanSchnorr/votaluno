@@ -29,7 +29,7 @@ class OfertaDisciplina(models.Model):
     disciplina = models.ForeignKey(Disciplina, on_delete=models.CASCADE)
 
     def __str__(self):
-        return f'{self.disciplina}'
+        return f'{self.disciplina} - {self.professor}'
 
 class Aluno(models.Model):
     nome = models.TextField(max_length=50)
@@ -65,7 +65,7 @@ class AvaliacaoTurma(models.Model):
         verbose_name_plural = 'Avaliações de turmas'
 
     def __str__(self):
-        return f'{self.oferta_disciplina.turma}'
+        return f'{self.oferta_disciplina.turma} - {self.oferta_disciplina} - {self.ano}'
     
 class Conselho(models.Model):
     turma = models.ForeignKey("Turma", on_delete=models.CASCADE)

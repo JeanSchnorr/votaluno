@@ -19,8 +19,10 @@ def avaliacoesTurmas(request):
   context['avaliacoes'] = avaliacoes
   return render(request,'avaliacoes/avaliacoesTurmas.html',context)
 
-def criarAvaliacaoTurma(request):
-  return redirect('avaliacoes/avaliacoesTurmas.html')
+def criarAvaliacaoTurma(request,avaliacao_id):
+  context = {}
+  avaliacao = AvaliacaoTurma.objects.get(avaliacaoTurma.id=avaliacao_id)
+  return render(request,'avaliacoes/avaliarTurma.html')
 
 def admin(request):
   return HttpResponseRedirect('/admin')
