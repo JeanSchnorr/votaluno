@@ -1,1 +1,4 @@
 votaluno/settings.py
+votaluno/__pycache__
+
+db.sqlite3
