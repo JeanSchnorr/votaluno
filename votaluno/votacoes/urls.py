@@ -7,4 +7,6 @@ from . import views
 urlpatterns = [
     path('', views.home, name='home'),
     path('AvaliacoesTurmas/', views.avaliacoesTurmas, name='avaliacoesTurmas'),
+    path('AvaliacoesTurmas/<int:avaliacao_id>', views.criarAvaliacaoTurma, name='criarAvaliacaoTurma'),
+    path('AvaliacoesTurmas/<int:avaliacao_id>/salvar', views.lancarAvaliacaoTurma, name='lancarAvaliacaoTurma')
 ]

@@ -1,6 +1,24 @@
 {% extends 'base.html' %}
 {% load staticfiles %}
 {% block body %}
-<h2 style="margin-top:.8em;">Minhas Avaliações de Turma</h2>
+<div class="d-flex flex-column p-2 rounded shadow-sm">
+    <h2>Avaliar Turma</h2>
+    <div>
+        <p>{{avaliacao.oferta_disciplina.turma}} - {{avaliacao.oferta_disciplina.disciplina}}</p>
+        <form class="d-flex flex-column" method="POST" action="{% url 'lancarAvaliacaoTurma' avaliacao.id %}">
+            {% csrf_token %}
+            {% for key, value in opcoes.items %}
+            <div>
+                <input type="checkbox" name="checks" id="{{ key }}" value="{{ key }}">
+                <label for="{{ key }}">{{ value }}</label>
+            </div>
+            {% endfor %}
+            <button type="submit">Lançar</button>
+        </form>
+
+    </div>
+
+</div>
+
 
 {% endblock %}

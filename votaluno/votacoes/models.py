@@ -58,6 +58,7 @@ class AvaliacaoTurma(models.Model):
     oferta_disciplina = models.ForeignKey(OfertaDisciplina, on_delete=models.CASCADE)
     bimestre = models.PositiveIntegerField(choices=CHOICES_BIMESTRE)
     ano = models.PositiveIntegerField()
+    avaliacao = models.PositiveIntegerField(default=0)
     status = models.BooleanField(default=True)
     
     class Meta:
