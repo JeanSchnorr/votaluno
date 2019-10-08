@@ -14,8 +14,8 @@
                     <th>Referente ao</th>
                 </tr> 
                 {% for avaliacao in avaliacoes %}
-                    <tr class='clickable-row' data-href="{% url 'criarAvaliacaoTurma' avaliacao.id %}">
-                        <td>{{avaliacao.oferta_disciplina.turma}}</td>
+                    <tr class='clickable-row' data-href="{% url 'criarAvaliacaoAluno' avaliacao.id %}">
+                        <td>{{avaliacao.aluno}}</td>
                         <td>{{avaliacao.oferta_disciplina.turma}}</td>
                         <td>{{avaliacao.oferta_disciplina.disciplina}}</td>
                         <td>{{avaliacao.bimestre}}º Bimestre de {{avaliacao.ano}}</td>
@@ -40,9 +40,10 @@
                     </tr> 
                     {% for avaliacao in avaliacoes_lancadas %}
                         <tr class='clickable-row' data-href="{% url 'visualizarAvaliacaoTurma' avaliacao.id %}">
-                            <td>{{avaliacao.oferta_disciplina.disciplina}}</td>
-                            <td>{{avaliacao.oferta_disciplina.turma}}</td>
-                            <td>{{avaliacao.bimestre}}º Bimestre de {{avaliacao.ano}}</td>
+                                <td>{{avaliacao.aluno}}</td>
+                                <td>{{avaliacao.oferta_disciplina.turma}}</td>
+                                <td>{{avaliacao.oferta_disciplina.disciplina}}</td>
+                                <td>{{avaliacao.bimestre}}º Bimestre de {{avaliacao.ano}}</td>
                         </tr>
                     {% endfor %}
                 </tbody>
