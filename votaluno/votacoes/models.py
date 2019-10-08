@@ -44,6 +44,8 @@ class AvaliacaoAluno(models.Model):
     oferta_disciplina = models.ForeignKey(OfertaDisciplina, on_delete=models.CASCADE)
     aluno = models.ForeignKey("Aluno", on_delete=models.CASCADE)
     bimestre = models.PositiveIntegerField(choices=CHOICES_BIMESTRE)
+    avaliacao = models.PositiveIntegerField(default=0)
+    outros_avaliacao = models.TextField(max_length=255,blank=True,null=True)
     ano = models.PositiveIntegerField()
     status = models.BooleanField(default=True)
         

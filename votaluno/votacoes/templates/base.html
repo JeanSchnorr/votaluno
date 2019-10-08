@@ -32,9 +32,9 @@
             <nav>
                 <a href="{% url 'home' %}">Página Inicial</a>
                 <a href="{% url 'avaliacoesTurmas' %}">Avaliacoes de Turmas</a>
-                <a href="/">Avaliacoes de Alunos</a>
+                <a href="{% url 'avaliacoesAlunos' %}">Avaliacoes de Alunos</a>
                 {% if user.is_superuser%}
-                    <a href="{% url 'admin:index' %}">Gerenciar</a>
+                <a href="{% url 'admin:index' %}">Gerenciar</a>
                 {% endif %}
                 <a href="{% url 'sair' %}">Sair</a>
             </nav>

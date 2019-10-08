@@ -1,7 +1,7 @@
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponseRedirect
 from django.contrib.auth.models import User
-from .models import Aluno, AvaliacaoTurma, Turma, OfertaDisciplina
+from .models import Aluno, AvaliacaoTurma, AvaliacaoAluno, Turma, OfertaDisciplina
 from django.shortcuts import render, redirect
 from .avaliacoes import *
 

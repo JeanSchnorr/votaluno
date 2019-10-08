@@ -13,7 +13,7 @@
                 <label for="{{ key }}">{{ value }}</label>
             </div>
             {% endfor %}
-            <textarea class="form-control overflow-hidden" name="outros" id="outros" cols="10" rows="5" placeholder="Digite sua avaliação aqui."></textarea>
+            <textarea class="overflow-hidden noresize " name="outros" id="outros" cols="10" rows="5" placeholder="Digite sua avaliação aqui."></textarea>
             <button class="btn btn-success" type="submit">Lançar</button>
         </form>
     </div>
@@ -29,7 +29,7 @@
         }
         else{
             text.style.display="flex"            
-            text.style.border="none"
+            text.style.border= "none"
             text.style.height= "0px"            
             text.value = ''
         }
