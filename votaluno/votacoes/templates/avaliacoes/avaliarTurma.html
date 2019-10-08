@@ -9,16 +9,30 @@
             {% csrf_token %}
             {% for key, value in opcoes.items %}
             <div>
-                <input type="checkbox" name="checks" id="{{ key }}" value="{{ key }}">
+                <input type="checkbox" name="checks" id="{{ key }}" value="{{ key }}" onclick="exibirTxt()">
                 <label for="{{ key }}">{{ value }}</label>
             </div>
             {% endfor %}
-            <button type="submit">Lançar</button>
+            <textarea class="form-control overflow-hidden" name="outros" id="outros" cols="10" rows="5" placeholder="Digite sua avaliação aqui."></textarea>
+            <button class="btn btn-success" type="submit">Lançar</button>
         </form>
-
     </div>
-
 </div>
-
-
+<script>
+    var text = document.querySelector("#outros")
+    var opcao = document.getElementById("128")
+    function exibirTxt(){
+        if (opcao.checked == true){
+            text.style=""  
+            text.style.display="flex"
+            text.style.height="100px" 
+        }
+        else{
+            text.style.display="flex"            
+            text.style.border="none"
+            text.style.height= "0px"            
+            text.value = ''
+        }
+    }
+</script>
 {% endblock %}

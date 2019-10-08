@@ -10,7 +10,6 @@
 tr:hover{
     cursor: pointer;
 }
-
 .navbar {
     width: 100%;
     max-width: 100%;
@@ -99,16 +98,15 @@ tr:hover{
 
 .content {
     display: flex;
-    max-width: calc(100% - var(--tamanho-sidebar) );
+    max-width: calc(70% - var(--tamanho-sidebar) );
     box-sizing: border-box;
     width: 100%;
     position: absolute;
-    right: 0;
+    left: var(--tamanho-sidebar);
     transition: var(--transicao);
     padding: 1em;
     height: 100%;
 }
-
 
 @media (max-width: 720px) {
     .navbar{
@@ -134,6 +132,10 @@ tr:hover{
     }
     .content {
         max-width: 100%;
+        left: 0;
+    }
+    .content div{
+        width: 100% !important;
     }
 }
 
@@ -143,4 +145,10 @@ tr:hover{
     color: #eeeeeea2;
     font-size: .8em;
     align-self: center;
+}
+
+#outros{
+    display: none;
+    margin: 1em 0;
+    transition: .5s;
 }

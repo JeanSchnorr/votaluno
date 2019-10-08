@@ -59,6 +59,7 @@ class AvaliacaoTurma(models.Model):
     bimestre = models.PositiveIntegerField(choices=CHOICES_BIMESTRE)
     ano = models.PositiveIntegerField()
     avaliacao = models.PositiveIntegerField(default=0)
+    outros_avaliacao = models.TextField(max_length=255,blank=True,null=True)
     status = models.BooleanField(default=True)
     
     class Meta:
