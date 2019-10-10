@@ -39,7 +39,7 @@
                         <th>Referente ao</th>
                     </tr> 
                     {% for avaliacao in avaliacoes_lancadas %}
-                        <tr class='clickable-row' data-href="{% url 'visualizarAvaliacaoTurma' avaliacao.id %}">
+                        <tr class='clickable-row' data-href="{% url 'visualizarAvaliacaoAluno' avaliacao.id %}">
                                 <td>{{avaliacao.aluno}}</td>
                                 <td>{{avaliacao.oferta_disciplina.turma}}</td>
                                 <td>{{avaliacao.oferta_disciplina.disciplina}}</td>

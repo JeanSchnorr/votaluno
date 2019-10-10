@@ -105,3 +105,11 @@ def lancarAvaliacaoAluno(request, avaliacao_id):
 
 def admin(request):
   return HttpResponseRedirect('/admin')
+
+@login_required
+def visualizarAvaliacaoAluno(request, avaliacao_id):
+  context = {}
+  avaliacao = AvaliacaoAluno.objects.get(id=avaliacao_id)
+  context['avaliacao'] = avaliacao
+  context['opcoes'] = get_array_aluno(avaliacao.avaliacao)
+  return render(request,'avaliacoes/visualizarAvaliacaoAluno.html', context)
