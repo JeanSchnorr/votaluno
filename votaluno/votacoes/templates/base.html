@@ -34,7 +34,7 @@
                 <a href="{% url 'avaliacoesTurmas' %}">Avaliacoes de Turmas</a>
                 <a href="{% url 'avaliacoesAlunos' %}">Avaliacoes de Alunos</a>
                 {% if user.is_superuser%}
-                <a href="{% url 'admin:index' %}">Gerenciar</a>
+                <a href="{% url 'administracao' %}">Administracao</a>
                 {% endif %}
                 <a href="{% url 'sair' %}">Sair</a>
             </nav>
@@ -47,6 +47,7 @@
     </main>
 
     <script src="{% static 'js/sidebar.js' %}"></script>
+    <script src="{% static 'js/responiveCarousel.js' %}"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">

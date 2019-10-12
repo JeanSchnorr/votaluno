@@ -72,13 +72,19 @@ class AvaliacaoTurma(models.Model):
         return f'{self.oferta_disciplina.turma} - {self.oferta_disciplina} - {self.ano}'
     
 class Conselho(models.Model):
-    turma = models.ForeignKey("Turma", on_delete=models.CASCADE)
-    ano = models.PositiveIntegerField()
+    turma = models.ForeignKey(Turma, on_delete=models.CASCADE)
     data = models.DateField(auto_now=False)
     situacao = models.BooleanField(default=False)
     
     def __str__(self):
         return f'{self.turma} - {self.data}'
+
+class UsuarioConselho(models.Model):
+    usuario = models.ForeignKey(User, on_delete=models.CASCADE)
+    conselho = models.ForeignKey(Conselho, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return f'{self.usuario} - {self.conselho}'
 
 class Votacao(models.Model):
     aluno = models.ForeignKey(Aluno, on_delete=models.CASCADE)
@@ -89,6 +95,10 @@ class Votacao(models.Model):
         verbose_name = 'Votação'
         verbose_name_plural = 'Votações'
 
+    def __str__(self):
+        return f'{self.aluno} - {self.conselho.turma}'
+
+
 class Voto(models.Model):
     SITUACAO_CHOICES={
         ('Aprovar', 'Aprovar'),   
@@ -98,3 +108,6 @@ class Voto(models.Model):
     votacao = models.ForeignKey(Votacao, on_delete=models.CASCADE)
     usuario = models.ForeignKey(User, on_delete=models.CASCADE)
     situacao = models.CharField(max_length=8, choices=SITUACAO_CHOICES, default='Abster')
+
+    def __str__(self):
+        return f'{self.usuario} para {self.votacao}'

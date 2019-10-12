@@ -1,7 +1,7 @@
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponseRedirect
 from django.contrib.auth.models import User
-from .models import Aluno, AvaliacaoTurma, AvaliacaoAluno, Turma, OfertaDisciplina
+from .models import Aluno, AvaliacaoTurma, AvaliacaoAluno, Turma, OfertaDisciplina, Conselho,UsuarioConselho, Votacao, Voto
 from django.shortcuts import render, redirect
 from .avaliacoes import *
 
@@ -103,6 +103,7 @@ def lancarAvaliacaoAluno(request, avaliacao_id):
   avaliacao.save()
   return avaliacoesAlunos(request)
 
+@login_required
 def admin(request):
   return HttpResponseRedirect('/admin')
 
@@ -113,3 +114,11 @@ def visualizarAvaliacaoAluno(request, avaliacao_id):
   context['avaliacao'] = avaliacao
   context['opcoes'] = get_array_aluno(avaliacao.avaliacao)
   return render(request,'avaliacoes/visualizarAvaliacaoAluno.html', context)
+
+#Views que manipulam a administração
+@login_required
+def administracao(request):
+  context = {}
+  conselhos = UsuarioConselho.objects.filter(usuario=request.user)
+  context['conselhos'] = conselhos
+  return render(request,'administracao.html', context)

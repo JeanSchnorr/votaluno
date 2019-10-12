@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block body %}
+<ul class="owl-carousel">
+    <li>as</li>
+    <li>dasd</li>
+
+    {% for conselho in conselhos %}
+    <li>{{conselho}}</li>
+    {% endfor %}
+
+</ul>
+{% endblock %}
