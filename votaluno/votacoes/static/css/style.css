@@ -111,6 +111,9 @@ tr:hover{
     max-height: 200px !important;
     max-width: 200px !important;
 }
+.card-carousel{
+    max-width: 300px !important;
+}
 @media (max-width: 720px) {
     .navbar{
         top: 0;

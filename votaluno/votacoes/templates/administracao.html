@@ -1,13 +1,156 @@
 {% extends 'base.html' %}
 {% load staticfiles %}
 {% block body %}
-<ul>
-    <li>as</li>
-    <li>dasd</li>
+<style>
+.carousel-container{
+    min-width: 100%;
+    width: 100%;
+    margin: auto;
+    position: relative;
+    overflow: hidden;
+}
 
+.carousel-slide{
+    display: flex;
+    min-width: 100%;
+    width: 100%;
+    height: 420px;
+}
+
+.carousel-item{
+    width: 100%;
+    min-width: 100%;
+    height: 100%;
+}
+
+.crs-item1{
+    background-color: #7353BA;
+}
+.crs-item2{
+    background-color: #272932;
+}
+.crs-item3{
+    background-color: #386bca;
+}
+
+#prevBtn{
+    position: absolute;
+    bottom: 0;
+    z-index: 10;
+    left: 0%;
+    cursor: pointer;
+    height: 420px;
+    fill: #ffffff;
+    transition: .4s;
+}
+
+
+
+#nextBtn{
+    position: absolute;
+    bottom: 0;
+    z-index: 10;
+    right: 0;
+    cursor: pointer;
+    height: 420px;
+    fill: #ffffff;
+    transition: .4s;
+}
+
+.carousel-btn{
+    position: relative;
+    width: 5%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    padding: 2%;
+}
+
+.carousel-btn img{
+    position: absolute;
+}
+
+#prevBtn img{
+    left: 20%;
+}
+#nextBtn img{
+    right: 20%;
+}
+
+.carousel-item{
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.carousel-item h3{
+    font-size: 2.5em;
+    margin-bottom: 1em;
+}
+
+.carousel-item p{
+    max-width: 35%;
+    text-align: center;
+}
+
+.carousel-title{
+    font-size: 2em;
+    margin-bottom: .5em;
+}
+
+@media(max-width: 768px){
+
+    .carousel-title{
+        font-size: 1.5em;
+    }
+
+    .carousel-item p{
+        max-width: 75%;
+
+}</style>
+
+
+<h2 class="mt-4">Meus conselhos</h2>
+<div class="d-flex">
     {% for conselho in conselhos %}
-    <li>{{conselho}}</li>
+    <div class="card card-carousel mr-2">
+        <h3 class="card-header">{{conselho.conselho.turma}}</h3>
+        <p class="card-body">Data prevista: {{conselho.conselho.data}}</p>
+    </div>
     {% endfor %}
-
-</ul>
+</div>
+<div class="carousel-container">
+    <div class="carousel-slide">
+        <div class="carousel-item crs-item3" id="lastClone">
+            <h3>Práticidade</h3>
+            <p class="carousel-title">Simples e fácil</p>
+            <p>Crie e coordene eventos, individualmente ou em grupo, de forma efetiva e funcional, tudo isso em seu computador ou na palma da sua mão</p>
+        </div>
+        <div class="carousel-item crs-item1">
+            <h3>Agilidade</h3>
+            <p class="carousel-title">Modele seu evento rapidamente</p>
+            <p>Aproveite as diversas ferramentas da plataforma para produzir um evento organizado e de qualidade com o mínimo esforço possível</p>
+        </div>
+        <div class="carousel-item crs-item2">
+            <h3>Atividades</h3>
+            <p class="carousel-title">Crie divesas atividades</p>
+            <p>Minicursos, oficinas, palestras e muitos outros tipos de atividades formuladas de forma simples, com controle de presença e certificados</p>
+        </div>
+        <div class="carousel-item crs-item3">
+            <h3>Práticidade</h3>
+            <p class="carousel-title">Simples e fácil</p>
+            <p>Crie e coordene eventos, individualmente ou em grupo, de forma efetiva e funcional, tudo isso em seu computador ou na palma da sua mão</p>
+        </div>
+        <div class="carousel-item crs-item1" id="firstClone">
+            <h3>Agilidade</h3>
+            <p class="carousel-title">Modele seu evento rapidamente</p>
+            <p>Aproveite as diversas ferramentas da plataforma para produzir um evento organizado e de qualidade com o mínimo esforço possível</p>
+        </div>
+    </div>
+    <div class="carousel-btn" id="prevBtn"><img src="../static/img/arrow-left.svg"></div>
+    <div class="carousel-btn" id="nextBtn"><img src="../static/img/arrow-right.svg" ></div>
+</div>
 {% endblock %}
