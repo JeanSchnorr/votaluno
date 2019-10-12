@@ -1,0 +1,110 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+.carousel-container{
+    min-width: 100%;
+    width: 100%;
+    margin: auto;
+    position: relative;
+    overflow: hidden;
+}
+
+.carousel-slide{
+    display: flex;
+    min-width: 100%;
+    width: 100%;
+    height: 420px;
+}
+
+.carousel-item{
+    width: 100%;
+    min-width: 100%;
+    height: 100%;
+}
+
+.crs-item1{
+    background-color: #7353BA;
+}
+.crs-item2{
+    background-color: #272932;
+}
+.crs-item3{
+    background-color: #386bca;
+}
+
+#prevBtn{
+    position: absolute;
+    bottom: 0;
+    z-index: 10;
+    left: 0%;
+    cursor: pointer;
+    height: 420px;
+    fill: #ffffff;
+    transition: .4s;
+}
+
+#nextBtn{
+    position: absolute;
+    bottom: 0;
+    z-index: 10;
+    right: 0;
+    cursor: pointer;
+    height: 420px;
+    fill: #ffffff;
+    transition: .4s;
+}
+
+.carousel-btn{
+    position: relative;
+    width: 5%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    padding: 2%;
+}
+
+.carousel-btn img{
+    position: absolute;
+}
+
+#prevBtn img{
+    left: 20%;
+}
+#nextBtn img{
+    right: 20%;
+}
+
+.carousel-item{
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.carousel-item h3{
+    font-size: 2.5em;
+    margin-bottom: 1em;
+}
+
+.carousel-item p{
+    max-width: 35%;
+    text-align: center;
+}
+
+.carousel-title{
+    font-size: 2em;
+    margin-bottom: .5em;
+}
+
+@media(max-width: 768px){
+    .carousel-title{
+        font-size: 1.5em;
+    }
+
+    .carousel-item p{
+        max-width: 75%;
+    }
+}
