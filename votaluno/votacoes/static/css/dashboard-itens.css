@@ -106,10 +106,6 @@
     .graph-holder{
         width: 100%;
     }
-    .content {
-        display: flex;
-        align-items: center;        
-    }
     .table-holder {
         max-width: 100%;
         width: 90%;

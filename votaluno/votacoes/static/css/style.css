@@ -98,14 +98,21 @@ tr:hover{
 
 .content {
     display: flex;
-    max-width: calc(70% - var(--tamanho-sidebar) );
     box-sizing: border-box;
-    width: 100%;
     position: absolute;
     left: var(--tamanho-sidebar);
     transition: var(--transicao);
     padding: 1em;
     height: 100%;
+    /* max-width: calc(70% - var(--tamanho-sidebar)); */
+    /* min-width: 100%; */
+}
+.card{
+    max-width: 300px !important;
+}
+.card:hover{
+    transition: .4s;
+    background-color: #cfcece;
 }
 .card-img-top{
     max-height: 200px !important;
@@ -113,6 +120,10 @@ tr:hover{
 }
 .card-carousel{
     max-width: 300px !important;
+}
+.link-card , .link-card:hover{
+    color: black;
+    text-decoration: none;
 }
 @media (max-width: 720px) {
     .navbar{
@@ -137,11 +148,14 @@ tr:hover{
         margin-top: 1em;
     }
     .content {
-        max-width: 100%;
         left: 0;
+        align-items: center !important;
     }
-    .content div{
-        width: 100% !important;
+    .card{
+        width: 100%;
+    }
+    .row div{
+        align-items: center !important;
     }
 }
 

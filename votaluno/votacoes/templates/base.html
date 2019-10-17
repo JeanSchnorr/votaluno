@@ -1,66 +1,88 @@
 {% load staticfiles %}
 <!DOCTYPE html>
 <html lang="pt-br">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <!-- link dos icones e css -->
-    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link
+      href="https://fonts.googleapis.com/css?family=Source+Sans+Pro&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
     <link rel="shortcut icon" href="{% static 'images/favicon-logo.ico' %}" />
-    <link rel="stylesheet" href="{% static 'css/dashboard-itens.css' %}">
-    <link rel="stylesheet" href="{% static 'css/carrossel.css' %}">
-    <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
-    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/dashboard-itens.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/carrossel.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" />
     <title>votAluno</title>
-</head>
+  </head>
 
-<body onresize="verificaSide()">
+  <body onresize="verificaSide()">
     <!-- Essa sessão só aparece nos layouts mobile -->
     <header>
-        <nav class="navbar d-flex justify-content-between align-items-center shadow-sm">
-            <i class="material-icons" onclick="abrirmenu()">menu</i>
-            <img height="90%" src="{% static 'images/logo-votaluno-preto.svg' %}" alt="Logo votAluno">
-            <a href="{% url 'sair' %}" class="text-decoration-none font-weight-bold text-body">Sair</a>
-        </nav>
-        <div class="sidebar-helper"></div>
+      <nav
+        class="navbar d-flex justify-content-between align-items-center shadow-sm"
+      >
+        <i class="material-icons" onclick="abrirmenu()">menu</i>
+        <img
+          height="90%"
+          src="{% static 'images/logo-votaluno-preto.svg' %}"
+          alt="Logo votAluno"
+        />
+        <a
+          href="{% url 'sair' %}"
+          class="text-decoration-none font-weight-bold text-body"
+          >Sair</a
+        >
+      </nav>
+      <div class="sidebar-helper"></div>
     </header>
 
     <main class="main">
-        <div class="sidebar shadow-sm" id="sidebar">
-            <img src="{% static 'images/logo-votaluno-branco.svg' %}" alt="Logo votAluno">
-            <nav>
-                <a href="{% url 'home' %}">Página Inicial</a>
-                <a href="{% url 'avaliacoesTurmas' %}">Avaliacoes de Turmas</a>
-                <a href="{% url 'avaliacoesAlunos' %}">Avaliacoes de Alunos</a>
-                {% if user.is_superuser%}
-                <a href="{% url 'administracao' %}">Administracao</a>
-                {% endif %}
-                <a href="{% url 'sair' %}">Sair</a>
-            </nav>
-            <p class="credit m-0">2019 - </p>
-        </div>
-        <div class="content d-flex flex-column" id="content">
-            {% block body %}
-            {% endblock body %}
-        </div>
+      <div class="sidebar shadow-sm" id="sidebar">
+        <img
+          src="{% static 'images/logo-votaluno-branco.svg' %}"
+          alt="Logo votAluno"
+        />
+        <nav>
+          <a href="{% url 'home' %}">Página Inicial</a>
+          <a href="{% url 'avaliacoesTurmas' %}">Avaliacoes de Turmas</a>
+          <a href="{% url 'avaliacoesAlunos' %}">Avaliacoes de Alunos</a>
+          {% if user.is_superuser%}
+          <a href="{% url 'administracao' %}">Administração Rápida</a>
+          <a href="{% url 'admin:index' %}">Gerenciar</a>
+          {% endif %}
+          <a href="{% url 'sair' %}">Sair</a>
+        </nav>
+        <p class="credit m-0">2019 -</p>
+      </div>
+      <div class="content flex-column" id="content">
+        {% block body %} {% endblock body %}
+      </div>
     </main>
-    
-    <script src="{% static 'js/sidebar.js' %}"></script> 
+
+    <script src="{% static 'js/sidebar.js' %}"></script>
+    <script src="{% static 'js/carrossel.js' %}"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
-    </script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
-    </script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
-    </script>
-    
-
-</body>
-
+    <script
+      src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+      integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+      integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+      integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+      crossorigin="anonymous"
+    ></script>
+  </body>
 </html>

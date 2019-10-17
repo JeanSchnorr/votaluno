@@ -1,13 +1,67 @@
-{% extends 'base.html' %}
-{% load staticfiles %}
-{% block body %}
-<h2 class="mt-4">Meus conselhos</h2>
-<div class="d-flex">
-    {% for conselho in conselhos %}
-    <div class="card card-carousel mr-2">
-        <h3 class="card-header">{{conselho.conselho.turma}}</h3>
-        <p class="card-body">Data prevista: {{conselho.conselho.data}}</p>
-    </div>
-    {% endfor %}
+{% extends 'base.html' %} {% load staticfiles %} {% block body %}
+<h2 >Administração Rápida</h2>
+<h3 class="mt-3">Conselhos</h3>
+<div class="row">
+  <div class="col-sm">
+    <h4 class="mt-3">- Gerar conselho</h4>
+    <form class="card" method="POST" action="{% url 'gerarConselho' %}">
+      {% csrf_token %}
+      <div class="m-3">
+        <select class="form-control" name="turma">
+          <option hidden>Selecione uma Turma</option>
+          {% if turmas %} {% for turma in turmas %}
+          <option value="{{ turma.id }}">{{ turma }}</option>
+          {% endfor %} {% else %}
+          <option disable>Não há turmas disponíveis</option>
+          {% endif %}
+        </select>
+        <label for="data" class="col-form-label" name="data">Data</label>
+        <input class="form-control" type="date" id="data" name="data" />
+        <div class="d-flex justify-content-center mt-3">
+          <button class="btn btn-info" type="submit">Gerar</button>
+        </div>
+      </div>
+    </form>
+  </div>
+  <div class="col-sm">
+    <h4 class="mt-3">- Iniciar Conselho</h4>
+    <form method="POST" class="card" action="{% url 'iniciarConselho' %}">
+      {% csrf_token %}      
+      <div class="m-3">
+        <select class="form-control" name="conselho">
+          <option hidden>Selecione um Conselho</option>
+          {% if conselhos %} 
+          {% for conselho in conselhos %}
+          <option value="{{ conselho.id }}">{{ conselho }}</option>
+          {% endfor %} 
+          {% else %}
+          <option disable>Não há conselhos disponíveis</option>
+          {% endif %}
+        </select>
+        <div class="d-flex justify-content-center mt-3">
+          <button class="btn btn-info" type="submit">Iniciar</button>
+        </div>
+      </div>
+    </form>
+  </div>
+  <div class="col-sm">
+    <h4 class="mt-3">- Encerrar Conselho</h4>
+    <form class="card" action="{% url 'iniciarConselho' %}">
+      <div class="m-3">
+        <select class="form-control" name="conselho">
+          <option hidden>Selecione um Conselho</option>
+          {% if conselhos %} {% for conselho in conselhos%}
+          <option value="{{ conselho.id }}">{{ conselho }}</option>
+          {% endfor %} {% else %}
+          <option disable>Não há conselhos disponíveis</option>
+          {% endif %}
+        </select>
+        <div class="d-flex justify-content-center mt-3">
+          <button class="btn btn-info" type="submit">Iniciar</button>
+        </div>
+      </div>
+    </form>
+  </div>
 </div>
+
 {% endblock %}

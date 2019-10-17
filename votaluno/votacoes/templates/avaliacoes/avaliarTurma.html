@@ -1,38 +1,54 @@
-{% extends 'base.html' %}
-{% load staticfiles %}
-{% block body %}
+{% extends 'base.html' %} {% load staticfiles %} {% block body %}
 <div class="d-flex flex-column p-2 rounded shadow-sm">
-    <h2>Avaliar Turma</h2>
-    <div>
-        <p>{{avaliacao.oferta_disciplina.turma}} - {{avaliacao.oferta_disciplina.disciplina}}</p>
-        <form class="d-flex flex-column" method="POST" action="{% url 'lancarAvaliacaoTurma' avaliacao.id %}">
-            {% csrf_token %}
-            {% for key, value in opcoes.items %}
-            <div>
-                <input type="checkbox" name="checks" id="{{ key }}" value="{{ key }}" onclick="exibirTxt()">
-                <label for="{{ key }}">{{ value }}</label>
-            </div>
-            {% endfor %}
-            <textarea class="overflow-hidden noresize " name="outros" id="outros" cols="10" rows="5" placeholder="Digite sua avaliação aqui."></textarea>
-            <button class="btn btn-success" type="submit">Lançar</button>
-        </form>
-    </div>
+  <h2>Avaliar Turma</h2>
+  <div>
+    <p>
+      {{ avaliacao.oferta_disciplina.turma }} -
+      {{ avaliacao.oferta_disciplina.disciplina }}
+    </p>
+    <form
+      class="d-flex flex-column"
+      method="POST"
+      action="{% url 'lancarAvaliacaoTurma' avaliacao.id %}"
+    >
+      {% csrf_token %} {% for key, value in opcoes.items %}
+      <div>
+        <input
+          type="checkbox"
+          name="checks"
+          id="{{ key }}"
+          value="{{ key }}"
+          onclick="exibirTxt()"
+        />
+        <label for="{{ key }}">{{ value }}</label>
+      </div>
+      {% endfor %}
+      <textarea
+        class="overflow-hidden noresize "
+        name="outros"
+        id="outros"
+        cols="10"
+        rows="5"
+        placeholder="Digite sua avaliação aqui."
+      ></textarea>
+      <button class="btn btn-success" type="submit">Lançar</button>
+    </form>
+  </div>
 </div>
 <script>
-    var text = document.querySelector("#outros")
-    var opcao = document.getElementById("128")
-    function exibirTxt(){
-        if (opcao.checked == true){
-            text.style=""  
-            text.style.display="flex"
-            text.style.height="100px" 
-        }
-        else{
-            text.style.display="flex"            
-            text.style.border= "none"
-            text.style.height= "0px"            
-            text.value = ''
-        }
+  var text = document.querySelector("#outros");
+  var opcao = document.getElementById("128");
+  function exibirTxt() {
+    if (opcao.checked == true) {
+      text.style = "";
+      text.style.display = "flex";
+      text.style.height = "100px";
+    } else {
+      text.style.display = "flex";
+      text.style.border = "none";
+      text.style.height = "0px";
+      text.value = "";
     }
+  }
 </script>
 {% endblock %}

@@ -1,47 +1,65 @@
 {% load staticfiles %}
 <!DOCTYPE html>
 <html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <link rel="shortcut icon" href="{% static 'images/favicon-logo.ico' %}" />
-    <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+    <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}" />
     <script src="{% static 'js/bootstrap.js' %}"></script>
     <title>Login votAluno</title>
-</head>
-   
-<body class="d-flex justify-content-center align-items-center bg-light" style="min-height: 100vh">
-    <form class="bg-white shadow-sm rounded m-2 px-4 py-4 d-flex flex-column text-center" style="max-width: 400px;" method="POST" role="form">
-        {% csrf_token %}    
-        <img class="img-fluid my-3 align-self-center" src="{% static 'images/logo-votaluno-verde.svg' %}" alt="Logo sistema" width="90%" >   
-        <div class="mb-4">
-            <p>Por favor realize o login para que possa acessar o sistema.</p>
-        </div>
-        {% for field in form %}
-        <div class="py-2">
-            {{field}}
-            {{field.errors}}
-        </div>
-        {% endfor %}
-        {% if form.errors %}
-            <div class="alert alert-danger alert-dismissible fade show" role="alert">                
-                <p class="alert-link">Seu nome de usuário e senha não coincidem. Por favor, tente novamente.</p>
-                <hr>
-                <p class="alert-link">Note que ambos os campos diferenciam maiúsculas e minúsculas.</p>
-            </div>
-        {% endif %}
-        <button class="btn btn-lg btn-info" type="submit" value="Entrar">ENTRAR</button>
-        <input type="hidden" name="next" value="{{ next }}">
+  </head>
+
+  <body
+    class="d-flex justify-content-center align-items-center bg-light"
+    style="min-height: 100vh"
+  >
+    <form
+      class="bg-white shadow-sm rounded m-2 px-4 py-4 d-flex flex-column text-center"
+      style="max-width: 400px;"
+      method="POST"
+      role="form"
+    >
+      {% csrf_token %}
+      <img
+        class="img-fluid my-3 align-self-center"
+        src="{% static 'images/logo-votaluno-verde.svg' %}"
+        alt="Logo sistema"
+        width="90%"
+      />
+      <div class="mb-4">
+        <p>Por favor realize o login para que possa acessar o sistema.</p>
+      </div>
+      {% for field in form %}
+      <div class="py-2">
+        {{ field }}
+        {{ field.errors }}
+      </div>
+      {% endfor %} {% if form.errors %}
+      <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        <p class="alert-link">
+          Seu nome de usuário e senha não coincidem. Por favor, tente novamente.
+        </p>
+        <hr />
+        <p class="alert-link">
+          Note que ambos os campos diferenciam maiúsculas e minúsculas.
+        </p>
+      </div>
+      {% endif %}
+      <button class="btn btn-lg btn-info" type="submit" value="Entrar">
+        ENTRAR
+      </button>
+      <input type="hidden" name="next" value="{{ next }}" />
     </form>
 
-<script>
-    const idUsername = document.querySelector('#id_username');
-    const idPassword = document.querySelector('#id_password');
-    idUsername.className = 'form-control';
-    idPassword.className = 'form-control';
-    idUsername.placeholder = 'Escreva seu Usuário';
-    idPassword.placeholder = 'Digite sua Senha';
-</script>
-</body>
+    <script>
+      const idUsername = document.querySelector("#id_username");
+      const idPassword = document.querySelector("#id_password");
+      idUsername.className = "form-control";
+      idPassword.className = "form-control";
+      idUsername.placeholder = "Escreva seu Usuário";
+      idPassword.placeholder = "Digite sua Senha";
+    </script>
+  </body>
 </html>

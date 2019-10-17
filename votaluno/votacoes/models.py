@@ -77,7 +77,11 @@ class Conselho(models.Model):
     situacao = models.BooleanField(default=False)
     
     def __str__(self):
-        return f'{self.turma} - {self.data}'
+        if self.situacao:
+            text = 'Iniciada'
+        else:
+            text = 'Fechada'
+        return f'{self.turma} - {text}'
 
 class UsuarioConselho(models.Model):
     usuario = models.ForeignKey(User, on_delete=models.CASCADE)

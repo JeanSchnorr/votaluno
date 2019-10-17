@@ -104,10 +104,6 @@ def lancarAvaliacaoAluno(request, avaliacao_id):
   return avaliacoesAlunos(request)
 
 @login_required
-def admin(request):
-  return HttpResponseRedirect('/admin')
-
-@login_required
 def visualizarAvaliacaoAluno(request, avaliacao_id):
   context = {}
   avaliacao = AvaliacaoAluno.objects.get(id=avaliacao_id)
@@ -119,6 +115,33 @@ def visualizarAvaliacaoAluno(request, avaliacao_id):
 @login_required
 def administracao(request):
   context = {}
-  conselhos = UsuarioConselho.objects.filter(usuario=request.user)
+  turmas = Turma.objects.all
+  conselhos = Conselho.objects.filter(situacao=False)
+  context['turmas'] = turmas
   context['conselhos'] = conselhos
   return render(request,'administracao.html', context)
+
+@login_required
+def admin(request):
+  return HttpResponseRedirect('/admin')
+
+#Views para Conselhos
+@login_required
+def gerarConselho(request):
+  turma = request.POST.get("turma")
+  data = request.POST.get("data")
+  conselho = Conselho.objects.create(
+    turma=int(turma),
+    data=data,
+    situacao=False
+  )
+  conselho.save()
+  return administracao(request)
+
+@login_required
+def iniciarConselho(request):
+  conselho_id = request.POST.get("conselho")
+  conselho = Conselho.objects.get(id=conselho_id)
+  conselho.situacao = True
+  conselho.save()
+  return administracao(request)
