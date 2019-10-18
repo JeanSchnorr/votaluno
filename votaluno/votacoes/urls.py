@@ -17,4 +17,5 @@ urlpatterns = [
     path('Administracao', views.administracao,  name='administracao'),
     path('Administracao/gerarConselho', views.gerarConselho,  name='gerarConselho'),
     path('Administracao/iniciarConselho', views.iniciarConselho,  name='iniciarConselho'),
+    path('Administracao/encerrrarConselho', views.encerrrarConselho,  name='encerrrarConselho'),
 ]

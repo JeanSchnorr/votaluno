@@ -116,9 +116,11 @@ def visualizarAvaliacaoAluno(request, avaliacao_id):
 def administracao(request):
   context = {}
   turmas = Turma.objects.all
-  conselhos = Conselho.objects.filter(situacao=False)
+  conselhosFechados = Conselho.objects.filter(situacao=False)
+  conselhosAbertos = Conselho.objects.filter(situacao=True)
   context['turmas'] = turmas
-  context['conselhos'] = conselhos
+  context['conselhosFechados'] = conselhosFechados
+  context['conselhosAbertos'] = conselhosAbertos
   return render(request,'administracao.html', context)
 
 @login_required
@@ -128,12 +130,12 @@ def admin(request):
 #Views para Conselhos
 @login_required
 def gerarConselho(request):
-  turma = request.POST.get("turma")
+  turma = Turma.objects.get(id=request.POST.get("turma"))  
   data = request.POST.get("data")
   conselho = Conselho.objects.create(
-    turma=int(turma),
-    data=data,
-    situacao=False
+    turma= turma,
+    data= data,
+    situacao = False,
   )
   conselho.save()
   return administracao(request)
@@ -143,5 +145,14 @@ def iniciarConselho(request):
   conselho_id = request.POST.get("conselho")
   conselho = Conselho.objects.get(id=conselho_id)
   conselho.situacao = True
+  conselho.save()
+  return administracao(request)
+  
+
+@login_required
+def encerrrarConselho(request):
+  conselho_id = request.POST.get("select")
+  conselho = Conselho.objects.get(id=conselho_id)
+  conselho.situacao = False
   conselho.save()
   return administracao(request)

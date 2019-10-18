@@ -29,9 +29,9 @@
       {% csrf_token %}      
       <div class="m-3">
         <select class="form-control" name="conselho">
-          <option hidden>Selecione um Conselho</option>
-          {% if conselhos %} 
-          {% for conselho in conselhos %}
+          <option disable hidden>Selecione um Conselho</option>
+          {% if conselhosFechados %} 
+          {% for conselho in conselhosFechados %}
           <option value="{{ conselho.id }}">{{ conselho }}</option>
           {% endfor %} 
           {% else %}
@@ -46,18 +46,18 @@
   </div>
   <div class="col-sm">
     <h4 class="mt-3">- Encerrar Conselho</h4>
-    <form class="card" action="{% url 'iniciarConselho' %}">
+    <form class="card" action="{% url 'encerrrarConselho' %}">
       <div class="m-3">
-        <select class="form-control" name="conselho">
+        <select class="form-control" name="select">
           <option hidden>Selecione um Conselho</option>
-          {% if conselhos %} {% for conselho in conselhos%}
+          {% if conselhosAbertos %} {% for conselho in conselhosAbertos%}
           <option value="{{ conselho.id }}">{{ conselho }}</option>
           {% endfor %} {% else %}
           <option disable>Não há conselhos disponíveis</option>
           {% endif %}
         </select>
         <div class="d-flex justify-content-center mt-3">
-          <button class="btn btn-info" type="submit">Iniciar</button>
+          <button class="btn btn-info" type="submit">Encerrar</button>
         </div>
       </div>
     </form>
