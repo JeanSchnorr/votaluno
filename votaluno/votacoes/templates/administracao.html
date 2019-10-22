@@ -1,5 +1,32 @@
 {% extends 'base.html' %} {% load staticfiles %} {% block body %}
 <h2 >Administração Rápida</h2>
+<h3 class="mt-3">Avaliações</h3>
+<div class="row">
+  <div class="col-sm">
+    <h4 class="mt-3">- Gerar avaliações (Turma e alunos)</h4>
+    <form class="card" method="POST" action="{% url 'gerarAvaliacoesTurma' %}">
+      {% csrf_token %}
+      <div class="m-3">
+        <select class="form-control" name="turma">
+          <option hidden>Selecione uma Turma</option>
+          {% if turmas %} 
+          {% for turma in turmas %}
+          <option value="{{ turma.id }}">{{ turma }}</option>
+          {% endfor %} 
+          {% else %}
+          <option disabled>Não há turmas disponíveis</option>
+          {% endif %}
+        </select>
+        <div class="d-flex justify-content-center mt-3">
+          <button class="btn btn-info" type="submit">Gerar</button>
+        </div>
+      </div>
+    </form>
+  </div>  
+  
+</div>
+
+
 <h3 class="mt-3">Conselhos</h3>
 <div class="row">
   <div class="col-sm">
@@ -12,7 +39,7 @@
           {% if turmas %} {% for turma in turmas %}
           <option value="{{ turma.id }}">{{ turma }}</option>
           {% endfor %} {% else %}
-          <option disable>Não há turmas disponíveis</option>
+          <option disabled>Não há turmas disponíveis</option>
           {% endif %}
         </select>
         <label for="data" class="col-form-label" name="data">Data</label>
@@ -29,13 +56,13 @@
       {% csrf_token %}      
       <div class="m-3">
         <select class="form-control" name="conselho">
-          <option disable hidden>Selecione um Conselho</option>
+          <option disabled hidden>Selecione um Conselho</option>
           {% if conselhosFechados %} 
           {% for conselho in conselhosFechados %}
           <option value="{{ conselho.id }}">{{ conselho }}</option>
           {% endfor %} 
           {% else %}
-          <option disable>Não há conselhos disponíveis</option>
+          <option disabled>Não há conselhos disponíveis</option>
           {% endif %}
         </select>
         <div class="d-flex justify-content-center mt-3">
@@ -46,14 +73,17 @@
   </div>
   <div class="col-sm">
     <h4 class="mt-3">- Encerrar Conselho</h4>
-    <form class="card" action="{% url 'encerrrarConselho' %}">
+    <form method="POST" class="card" action="{% url 'encerrrarConselho' %}">
+      {% csrf_token %}      
       <div class="m-3">
         <select class="form-control" name="select">
           <option hidden>Selecione um Conselho</option>
-          {% if conselhosAbertos %} {% for conselho in conselhosAbertos%}
-          <option value="{{ conselho.id }}">{{ conselho }}</option>
-          {% endfor %} {% else %}
-          <option disable>Não há conselhos disponíveis</option>
+          {% if conselhosAbertos %} 
+          {% for cons in conselhosAbertos %}
+          <option value="{{ cons.id }}">{{ cons }}</option>
+          {% endfor %} 
+          {% else %}
+          <option disabled>Não há conselhos disponíveis</option>
           {% endif %}
         </select>
         <div class="d-flex justify-content-center mt-3">
@@ -63,5 +93,7 @@
     </form>
   </div>
 </div>
+
+
 
 {% endblock %}

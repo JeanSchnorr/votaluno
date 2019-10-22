@@ -108,7 +108,7 @@ tr:hover{
     /* min-width: 100%; */
 }
 .card{
-    max-width: 300px !important;
+    width: 300px !important;
 }
 .card:hover{
     transition: .4s;

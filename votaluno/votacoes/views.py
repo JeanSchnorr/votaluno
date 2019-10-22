@@ -62,6 +62,14 @@ def visualizarAvaliacaoTurma(request, avaliacao_id):
 
 #Views que manipulam as avaliações dos alunos
 @login_required
+def gerarAvaliacoesTurma(request):
+  turma = Turma.objects.get(id=request.POST.get("turma"))  
+  ofertaDisciplinas_turma = ofertaDisciplina.objects.filter(turma=turma)
+  for disciplina in ofertaDisciplinas_turma:
+    avaliacaoTu
+  return administracao(request)
+
+@login_required
 def avaliacoesAlunos(request):
   context = {}
   avaliacoes=[]
@@ -138,6 +146,8 @@ def gerarConselho(request):
     situacao = False,
   )
   conselho.save()
+
+
   return administracao(request)
 
 @login_required

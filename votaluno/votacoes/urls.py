@@ -15,6 +15,7 @@ urlpatterns = [
     path('AvaliacoesAlunos/<int:avaliacao_id>/salvar', views.lancarAvaliacaoAluno, name='lancarAvaliacaoAluno'), 
     path('AvaliacoesAlunos/<int:avaliacao_id>/visualizar', views.visualizarAvaliacaoAluno,  name='visualizarAvaliacaoAluno'),
     path('Administracao', views.administracao,  name='administracao'),
+    path('Administracao/gerarAvaliacoesTurma', views.gerarAvaliacoesTurma,  name='gerarAvaliacoesTurma'),
     path('Administracao/gerarConselho', views.gerarConselho,  name='gerarConselho'),
     path('Administracao/iniciarConselho', views.iniciarConselho,  name='iniciarConselho'),
     path('Administracao/encerrrarConselho', views.encerrrarConselho,  name='encerrrarConselho'),
