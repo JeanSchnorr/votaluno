@@ -3,6 +3,7 @@ from django.http import HttpResponseRedirect
 from django.contrib.auth.models import User
 from .models import Aluno, AvaliacaoTurma, AvaliacaoAluno, Turma, OfertaDisciplina, Conselho,UsuarioConselho, Votacao, Voto
 from django.shortcuts import render, redirect
+from datetime import datetime
 from .avaliacoes import *
 
 @login_required
@@ -64,9 +65,15 @@ def visualizarAvaliacaoTurma(request, avaliacao_id):
 @login_required
 def gerarAvaliacoesTurma(request):
   turma = Turma.objects.get(id=request.POST.get("turma"))  
-  ofertaDisciplinas_turma = ofertaDisciplina.objects.filter(turma=turma)
+  bimestre = request.POST.get("bimestre")
+  alunos = Aluno.objects.filter(turma=turma)
+  ofertaDisciplinas_turma = OfertaDisciplina.objects.filter(turma=turma)
   for disciplina in ofertaDisciplinas_turma:
-    avaliacaoTu
+    avaliacaoTurma =  AvaliacaoTurma(oferta_disciplina=disciplina,bimestre=bimestre,ano=int(datetime.now().year))
+    avaliacaoTurma.save()
+  for aluno in alunos:
+    avaliacaoAluno = AvaliacaoAluno(oferta_disciplina=disciplina,aluno=aluno,bimestre=bimestre,ano=int(datetime.now().year))
+    avaliacaoAluno.save()
   return administracao(request)
 
 @login_required
