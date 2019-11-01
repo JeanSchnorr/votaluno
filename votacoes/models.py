@@ -34,9 +34,9 @@ class OfertaDisciplina(models.Model):
 class Aluno(models.Model):
     nome = models.TextField(max_length=50)
     cpf = models.TextField(max_length=14)
-    foto = models.ImageField(upload_to='alunos/')
+    foto = models.ImageField(default='default.png',upload_to='alunos/')
     turma = models.ForeignKey(Turma, on_delete=models.CASCADE)
-    
+
     def __str__(self):
         return self.nome
 

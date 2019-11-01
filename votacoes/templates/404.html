@@ -17,13 +17,19 @@
     <link rel="shortcut icon" href="{% static 'images/favicon-logo.ico' %}" />
     <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}" />
     <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/error-page.css' %}" />
     <title>votAluno</title>
   </head>
 
   <body>
-    <main style="height: 100vh; background-color: ;" class="d-flex flex-column justify-content-center align-items-center">
-      <h1>Eita! Página não encontrada!</h1> 
-      <img class="w-50 pt-2" src="{% static 'images/404-error.svg' %}" alt="404">
+    <main style="height: 100vh;" class="d-flex justify-content-center">
+      <div style="background-color: #9dd19d" class="d-flex flex-column justify-content-center text-center w-75">
+        <h1>Eita! Página não encontrada!</h1> 
+        <h2>Vamos voltar?</h2>
+        <a href="{% url 'home' %}">
+          <img class="w-75 pt-2" src="{% static 'images/404-error.svg' %}" alt="404">
+        </a>
+    </div>
     </main>
   </body>
 </html>
