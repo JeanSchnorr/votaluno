@@ -71,9 +71,9 @@ def gerarAvaliacoesTurma(request):
   for disciplina in ofertaDisciplinas_turma:
     avaliacaoTurma =  AvaliacaoTurma(oferta_disciplina=disciplina,bimestre=bimestre,ano=int(datetime.now().year))
     avaliacaoTurma.save()
-  for aluno in alunos:
-    avaliacaoAluno = AvaliacaoAluno(oferta_disciplina=disciplina,aluno=aluno,bimestre=bimestre,ano=int(datetime.now().year))
-    avaliacaoAluno.save()
+    for aluno in alunos:
+      avaliacaoAluno = AvaliacaoAluno(oferta_disciplina=disciplina,aluno=aluno,bimestre=bimestre,ano=int(datetime.now().year))
+      avaliacaoAluno.save()
   return administracao(request)
 
 @login_required
@@ -173,3 +173,10 @@ def encerrrarConselho(request):
   conselho.situacao = False
   conselho.save()
   return administracao(request)
+
+#erros
+def error404(request,exception):
+  return render(request, '404.html', status=404)
+
+def error500(request):
+  return render(request, '500.html', status=500)

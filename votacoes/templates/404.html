@@ -1,0 +1,29 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <!-- link dos icones e css -->
+    <link
+      href="https://fonts.googleapis.com/css?family=Source+Sans+Pro&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+    <link rel="shortcut icon" href="{% static 'images/favicon-logo.ico' %}" />
+    <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+    <title>votAluno</title>
+  </head>
+
+  <body>
+    <main style="height: 100vh; background-color: ;" class="d-flex flex-column justify-content-center align-items-center">
+      <h1>Eita! Página não encontrada!</h1> 
+      <img class="w-50 pt-2" src="{% static 'images/404-error.svg' %}" alt="404">
+    </main>
+  </body>
+</html>
