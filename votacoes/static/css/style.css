@@ -104,7 +104,7 @@ tr:hover{
     transition: var(--transicao);
     padding: 1em;
     height: 100%;
-    width: 100%;
+    max-width: 100% !important;
 }
 .card{
     width: 300px !important;
@@ -155,6 +155,9 @@ tr:hover{
     }
     .row div{
         align-items: center !important;
+    }
+    .card{
+        width: 100% !important;
     }
 }
 
