@@ -1,10 +1,10 @@
 {% extends 'base.html' %} {% load staticfiles %} {% block body %}
-<div class="d-flex flex-column p-4">
+<div class="d-flex flex-column mt-4">
   <h2>
     Turma Avaliada: {{ avaliacao.oferta_disciplina.turma }} -
     {{ avaliacao.oferta_disciplina.disciplina }}
   </h2>
-  <ul class="list-group shadow-sm my-2">
+  <ul class=" list list-group list-group-flush shadow-sm my-2">
     <li class="list-group-item bg-success text-center text-white">Veredito:</li>
     {% for opcao in opcoes %}
     <li class="list-group-item" id="{{ opcao }}">{{ opcao }}</li>

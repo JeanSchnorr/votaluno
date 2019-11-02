@@ -104,8 +104,7 @@ tr:hover{
     transition: var(--transicao);
     padding: 1em;
     height: 100%;
-    /* max-width: calc(70% - var(--tamanho-sidebar)); */
-    /* min-width: 100%; */
+    width: 100%;
 }
 .card{
     width: 300px !important;
@@ -166,7 +165,9 @@ tr:hover{
     font-size: .8em;
     align-self: center;
 }
-
+.list{
+    max-width: 500px;
+}
 #outros{
     display: none;
     margin: 1em 0;
