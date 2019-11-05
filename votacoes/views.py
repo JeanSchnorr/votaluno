@@ -6,9 +6,25 @@ from django.shortcuts import render, redirect
 from datetime import datetime
 from .avaliacoes import *
 
+def turmasProfessor(professor):
+  turmas = []
+  ofertas = OfertaDisciplina.objects.filter(professor=professor)
+  for oferta in ofertas:
+    if oferta.turma in turmas:
+      turmas.append(oferta.turma)  
+  return turmas
+
 @login_required
 def home(request):
-  return render(request, 'home.html')
+  context = {}
+  conselhosAbertos = []
+  turmas = turmasProfessor(request.user)
+  print(turmas)
+  for turma in turmas:
+    conselho = (Conselho.objects.get(turma=turma,situacao=True))
+    conselhosAbertos.append(conselho)
+  context['conselhosAbertos'] = conselhosAbertos
+  return render(request, 'home.html',context)
 
 # Views que manipulam as avaliações das turmas
 @login_required
@@ -145,6 +161,7 @@ def admin(request):
 #Views para Conselhos
 @login_required
 def gerarConselho(request):
+  # Gerar conselho
   turma = Turma.objects.get(id=request.POST.get("turma"))  
   data = request.POST.get("data")
   conselho = Conselho.objects.create(
@@ -153,25 +170,54 @@ def gerarConselho(request):
     situacao = False,
   )
   conselho.save()
-
+  #Criar e popular lista de professores que dão aula para essa turma
+  professores = []
+  ofertaDisciplinas_turma = OfertaDisciplina.objects.filter(turma=turma)
+  for disciplina in ofertaDisciplinas_turma:
+    if disciplina.professor in professores:
+      professores.append(disciplina.professor)
+  # Gerar votacoes dos alunos da turma deste conselho
+  alunos = Aluno.objects.filter(turma=turma)
+  for aluno in alunos:
+    votacao_aluno = Votacao(aluno=aluno,conselho=conselho)
+    votacao_aluno.save()
+  #Gerar votos em branco para os professores deste conselho
+    for professor in professores:
+      voto_branco = Voto(usuario=professor,votacao=votacao_aluno)
+      voto_branco.save()
 
   return administracao(request)
 
 @login_required
 def iniciarConselho(request):
+  # Pesquisar e iniciar o conselho
   conselho_id = request.POST.get("conselho")
   conselho = Conselho.objects.get(id=conselho_id)
   conselho.situacao = True
   conselho.save()
+  # Pesquisar e iniciar as votações dos alunos que pertencem à turma deste conselho
+  alunos = Aluno.objects.filter(turma=conselho.turma)
+  for aluno in alunos:
+    votacao_aluno = Votacao.objects.get(aluno=aluno,conselho=conselho)
+    votacao_aluno.situacao = True
+    votacao_aluno.save()
+
   return administracao(request)
   
 
 @login_required
 def encerrrarConselho(request):
+  # Pesquisar e encerrar o conselho
   conselho_id = request.POST.get("select")
   conselho = Conselho.objects.get(id=conselho_id)
   conselho.situacao = False
   conselho.save()
+  # Pesquisar e encerrar as votações dos alunos que pertencem à turma deste conselho
+  alunos = Aluno.objects.filter(turma=conselho.turma)
+  for aluno in alunos:
+    votacao_aluno = Votacao.objects.get(aluno=aluno,conselho=conselho)
+    votacao_aluno.situacao = False
+    votacao_aluno.save()
   return administracao(request)
 
 #erros
