@@ -6,24 +6,21 @@ from django.shortcuts import render, redirect
 from datetime import datetime
 from .avaliacoes import *
 
-def turmasProfessor(professor):
-  turmas = []
-  ofertas = OfertaDisciplina.objects.filter(professor=professor)
-  for oferta in ofertas:
-    if oferta.turma in turmas:
-      turmas.append(oferta.turma)  
-  return turmas
-
 @login_required
 def home(request):
   context = {}
-  conselhosAbertos = []
-  turmas = turmasProfessor(request.user)
-  print(turmas)
-  for turma in turmas:
-    conselho = (Conselho.objects.get(turma=turma,situacao=True))
-    conselhosAbertos.append(conselho)
-  context['conselhosAbertos'] = conselhosAbertos
+  conselhos_professor=[]
+  conselhos_abertos = []
+  conselhos = request.user.conselhos_usuario.all()
+  for conselho in conselhos:
+    conselhos_professor.append(conselho.conselho)
+  for conselho in Conselho.objects.filter(situacao=True):
+    if conselho in conselhos_professor:
+      conselhos_abertos.append(conselho)
+  print(conselhos)
+  print(conselhos_abertos)
+  print(conselhos_professor)
+  context['conselhos_abertos'] = conselhos_abertos
   return render(request, 'home.html',context)
 
 # Views que manipulam as avaliações das turmas
@@ -172,16 +169,22 @@ def gerarConselho(request):
   conselho.save()
   #Criar e popular lista de professores que dão aula para essa turma
   professores = []
-  ofertaDisciplinas_turma = OfertaDisciplina.objects.filter(turma=turma)
-  for disciplina in ofertaDisciplinas_turma:
-    if disciplina.professor in professores:
+  for disciplina in turma.disciplinas_turma.all():
+    if not disciplina.professor in professores:
       professores.append(disciplina.professor)
+
+  # Gerar relacionamento UsuarioConselho
+  if professores:
+    print(professores)
+    for professor in professores:
+      usuario_conselho = UsuarioConselho(usuario=professor,conselho=conselho)
+      usuario_conselho.save()
   # Gerar votacoes dos alunos da turma deste conselho
   alunos = Aluno.objects.filter(turma=turma)
   for aluno in alunos:
     votacao_aluno = Votacao(aluno=aluno,conselho=conselho)
     votacao_aluno.save()
-  #Gerar votos em branco para os professores deste conselho
+    #Gerar votos em branco para os professores deste conselho
     for professor in professores:
       voto_branco = Voto(usuario=professor,votacao=votacao_aluno)
       voto_branco.save()

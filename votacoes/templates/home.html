@@ -1,8 +1,8 @@
 {% extends 'base.html' %} {% load staticfiles %} {% block body %}
-{% if conselhosAbertos %}
+{% if conselhos_abertos %}
 <h2 class="mt-4">Conselhos em andamento</h2>
 <div class="row">
-    {% for conselho in conselhosAbertos %}
+    {% for conselho in conselhos_abertos %}
     <div class="col-sm">
       <h4 class="pt-3">{{conselho}}</h4>
     </div>

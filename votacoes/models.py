@@ -24,8 +24,8 @@ class Turma(models.Model):
         return f'{self.ano}º "{self.sala}" {self.curso}'
 
 class OfertaDisciplina(models.Model):
-    professor = models.ForeignKey(User, on_delete=models.CASCADE)
-    turma = models.ForeignKey(Turma, on_delete=models.CASCADE)
+    professor = models.ForeignKey(User, on_delete=models.CASCADE,related_name="disciplinas_professor")
+    turma = models.ForeignKey(Turma, on_delete=models.CASCADE,related_name="disciplinas_turma")
     disciplina = models.ForeignKey(Disciplina, on_delete=models.CASCADE)
 
     def __str__(self):
@@ -84,7 +84,7 @@ class Conselho(models.Model):
         return f'{self.turma} - {text}'
 
 class UsuarioConselho(models.Model):
-    usuario = models.ForeignKey(User, on_delete=models.CASCADE)
+    usuario = models.ForeignKey(User, on_delete=models.CASCADE,related_name="conselhos_usuario")
     conselho = models.ForeignKey(Conselho, on_delete=models.CASCADE)
 
     def __str__(self):
@@ -110,7 +110,7 @@ class Voto(models.Model):
         ('Abster', 'Abster')
     }
     votacao = models.ForeignKey(Votacao, on_delete=models.CASCADE)
-    usuario = models.ForeignKey(User, on_delete=models.CASCADE)
+    usuario = models.ForeignKey(User, on_delete=models.CASCADE, related_name="votos")
     situacao = models.CharField(max_length=8, choices=SITUACAO_CHOICES, default='Abster')
 
     def __str__(self):
