@@ -17,9 +17,6 @@ def home(request):
   for conselho in Conselho.objects.filter(situacao=True):
     if conselho in conselhos_professor:
       conselhos_abertos.append(conselho)
-  print(conselhos)
-  print(conselhos_abertos)
-  print(conselhos_professor)
   context['conselhos_abertos'] = conselhos_abertos
   return render(request, 'home.html',context)
 
