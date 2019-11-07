@@ -3,15 +3,16 @@
 <h2 class="mt-4">Conselhos em andamento</h2>
 <div class="row">
     {% for conselho in conselhos_abertos %}
-    <div class="col-sm">
-      <h4 class="pt-3">{{conselho}}</h4>
-    </div>
+    <a href="#" class="col-sm rounded pt-1 m-2 text-decoration-none text-dark" style="background-color: lightgray;">
+      <h4>{{conselho.turma}}</h4>
+      <p>Data prevista: {{conselho.data}}</p>
+    </a>
     {% endfor %}
 </div>
 {% else %}
 <div class="text-center">
   <h2 class="mt-4">Nenhum conselho para participar</h2>
-  <img style="max-width: 450px;" src="{% static 'images/no-data.svg' %}" alt="">
+  <img class="pt-2 w-50"  src="{% static 'images/no-data.svg' %}" alt="ícone sem conselhos">
 </div>
 {% endif %}
 {% endblock %}
