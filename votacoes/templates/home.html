@@ -8,5 +8,10 @@
     </div>
     {% endfor %}
 </div>
+{% else %}
+<div class="text-center">
+  <h2 class="mt-4">Nenhum conselho para participar</h2>
+  <img style="max-width: 450px;" src="{% static 'images/no-data.svg' %}" alt="">
+</div>
 {% endif %}
 {% endblock %}

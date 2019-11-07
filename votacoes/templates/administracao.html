@@ -7,7 +7,7 @@
     <form class="card" method="POST" action="{% url 'gerarAvaliacoesTurma' %}">
       {% csrf_token %}
       <div class="m-3">
-        <select class="form-control" name="turma">
+        <select class="form-control" name="turma" >
           <option hidden>Selecione uma Turma</option>
           {% if turmas %} 
           {% for turma in turmas %}
@@ -16,7 +16,7 @@
           <option disabled>Não há turmas disponíveis</option>
           {% endif %}
         </select>
-        <select class="form-control mt-2" name="bimestre">
+        <select class="form-control mt-2" name="bimestre" >
           <option hidden>Selecione um bimestre</option>
           <option value="1">1</option>
           <option value="2">2</option>

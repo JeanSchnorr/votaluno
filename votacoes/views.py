@@ -140,7 +140,7 @@ def visualizarAvaliacaoAluno(request, avaliacao_id):
 @login_required
 def administracao(request):
   context = {}
-  turmas = Turma.objects.all
+  turmas = Turma.objects.all()
   conselhosFechados = Conselho.objects.filter(situacao=False)
   conselhosAbertos = Conselho.objects.filter(situacao=True)
   context['turmas'] = turmas
