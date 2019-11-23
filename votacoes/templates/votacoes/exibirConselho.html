@@ -4,14 +4,14 @@
     <div class="row" style="padding-left: 16px;">
         {% for aluno in alunos_conselho %}
         <a href="{% url 'exibirVoto' conselho.id aluno.id %}" class="text-decoration-none text-muted"> 
-            <div class="col-sm card img-aluno img-thumbnail my-1 mr-1">
-                <img class="img-fluid rounded" src="{{ aluno.foto.url }}" alt="imagem do aluno">
-                <p>{{aluno}}</p>
+            <div class="col-sm card img-aluno img-thumbnail my-2 mr-2">
+                <img class="img-fluid rounded py-2" src="{{ aluno.foto.url }}" alt="imagem do aluno">
+                <p class="text-dark">{{aluno}}</p>
             </div>
         </a>
         {% endfor %}
     </div>
-    {% else %}
+{% else %}
     <h2 class="mt-4 text-center">Nenhum aluno para exibir</h2>
 {% endif %}
 {% endblock %}

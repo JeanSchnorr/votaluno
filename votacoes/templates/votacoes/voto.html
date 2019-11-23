@@ -1,3 +1,29 @@
 {% extends 'base.html' %} {% load staticfiles %} {% block body %}
-
+<div class="d-flex flex-column">
+    <div class="card">
+        <div class="w-100 text-center">
+            <h2 class="mt-1">Votar</h2>
+            <img
+                class="card-img-top img-fluid shadow m-1"
+                src="{{ aluno.foto.url }}"
+                alt="Foto do discente {{ avaliacao.aluno }}"
+            />
+        </div>
+        <div class="card-body">
+            <h4 class="card-title">{{ aluno }}</h4>
+            <p>Disciplina: {{ avaliacao.oferta_disciplina.disciplina }}</p>
+            <p>Turma: {{ avaliacao.oferta_disciplina.turma }}</p>
+        </div>
+        <form
+        width="100%"
+        class="d-flex flex-column"
+        method="POST"
+        action="{% url 'lancarVoto' conselho.id %}"
+        >
+        {% csrf_token %}
+        
+        <button class="btn btn-success m-2" type="submit">Lançar</button>
+        </form>
+    </div>
+</div>
 {% endblock %}

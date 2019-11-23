@@ -232,6 +232,7 @@ def exibirConselho(request, conselho_id):
   context['alunos_conselho'] = alunos_conselho
   return render(request,'votacoes/exibirConselho.html',context)
 
+#Views para Votacões
 def exibirVoto(request,conselho_id,aluno_id):
   context = {}
   aluno =Aluno.objects.get(id=aluno_id)
@@ -244,10 +245,31 @@ def exibirVoto(request,conselho_id,aluno_id):
   for voto_usuario in votos_usuario:
     if voto_usuario.votacao==votacao:
       voto = voto_usuario
+  context['conselho'] = conselho
   context['voto'] = voto
-
+  context['aluno'] = aluno
+  context['votacao'] = votacao[0]
   return render(request,'votacoes/voto.html',context)
 
+def gerarHistoricoAluno(id_aluno):
+  historico = {}
+  aluno = Aluno.objects.get(id=aluno_id)
+  aluno.avaliacoes_aluno.all()
+  for avaliacao in avaliacoes_aluno:
+    a+b
+  return historico
+
+def gerarHistoricoTurma(id_turma):
+  historico = {}
+  return historico
+
+def lancarVoto(request,conselho_id):
+  context = {}
+  conselho = Conselho.objects.get(id = conselho_id)
+  alunos_conselho = conselho.turma.alunos_turma.all()
+  context['conselho'] = conselho
+  context['alunos_conselho'] = alunos_conselho
+  return render(request,'votacoes/exibirConselho.html',context)
 #erros
 def error404(request,exception): 
   return render(request, '404.html', status=404)

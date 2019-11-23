@@ -41,8 +41,8 @@ class Aluno(models.Model):
         return self.nome
 
 class AvaliacaoAluno(models.Model):
-    oferta_disciplina = models.ForeignKey(OfertaDisciplina, on_delete=models.CASCADE)
-    aluno = models.ForeignKey("Aluno", on_delete=models.CASCADE)
+    oferta_disciplina = models.ForeignKey(OfertaDisciplina, on_delete=models.CASCADE,related_name="avaliacoes_aluno_disciplina")
+    aluno = models.ForeignKey("Aluno", on_delete=models.CASCADE,related_name="avaliacoes_aluno")
     bimestre = models.PositiveIntegerField(choices=CHOICES_BIMESTRE)
     avaliacao = models.PositiveIntegerField(default=0)
     outros_avaliacao = models.TextField(max_length=255,blank=True,null=True)
