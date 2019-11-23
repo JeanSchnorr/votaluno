@@ -101,6 +101,9 @@
 .table-holder td:first-child {
     border: none;
 }
+.img-aluno{
+    max-width: 200px !important;
+}
 
 @media (max-width: 720px) {
     .graph-holder{

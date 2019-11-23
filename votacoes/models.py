@@ -35,7 +35,7 @@ class Aluno(models.Model):
     nome = models.TextField(max_length=50)
     cpf = models.TextField(max_length=14)
     foto = models.ImageField(default='default.png',upload_to='alunos/')
-    turma = models.ForeignKey(Turma, on_delete=models.CASCADE)
+    turma = models.ForeignKey(Turma, on_delete=models.CASCADE,related_name="alunos_turma")
 
     def __str__(self):
         return self.nome
@@ -109,8 +109,8 @@ class Voto(models.Model):
         ('Reprovar', 'Reprovar'),   
         ('Abster', 'Abster')
     }
-    votacao = models.ForeignKey(Votacao, on_delete=models.CASCADE)
-    usuario = models.ForeignKey(User, on_delete=models.CASCADE, related_name="votos")
+    votacao = models.ForeignKey(Votacao, on_delete=models.CASCADE,related_name="votos_votacao")
+    usuario = models.ForeignKey(User, on_delete=models.CASCADE, related_name="votos_usuario")
     situacao = models.CharField(max_length=8, choices=SITUACAO_CHOICES, default='Abster')
 
     def __str__(self):

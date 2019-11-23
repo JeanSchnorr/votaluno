@@ -18,4 +18,7 @@ urlpatterns = [
     path('Administracao/gerarConselho', views.gerarConselho,  name='gerarConselho'),
     path('Administracao/iniciarConselho', views.iniciarConselho,  name='iniciarConselho'),
     path('Administracao/encerrrarConselho', views.encerrrarConselho,  name='encerrrarConselho'),
+    path('Administracao/exibirConselho/<int:conselho_id>', views.exibirConselho,  name='exibirConselho'),
+    path('exibirConselho/<int:conselho_id>', views.exibirConselho,  name='exibirConselho'),
+    path('votar/<int:conselho_id>/<int:aluno_id>', views.exibirVoto,  name='exibirVoto'),
 ]

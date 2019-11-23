@@ -17,7 +17,11 @@ def home(request):
   for conselho in Conselho.objects.filter(situacao=True):
     if conselho in conselhos_professor:
       conselhos_abertos.append(conselho)
-  context['conselhos_abertos'] = conselhos_abertos
+  if request.user.is_superuser:
+    context['conselhos_abertos'] = Conselho.objects.filter(situacao=True)
+  else:
+    context['conselhos_abertos'] = conselhos_abertos
+
   return render(request, 'home.html',context)
 
 # Views que manipulam as avaliações das turmas
@@ -220,8 +224,32 @@ def encerrrarConselho(request):
     votacao_aluno.save()
   return administracao(request)
 
+def exibirConselho(request, conselho_id):
+  context = {}
+  conselho = Conselho.objects.get(id = conselho_id)
+  alunos_conselho = conselho.turma.alunos_turma.all()
+  context['conselho'] = conselho
+  context['alunos_conselho'] = alunos_conselho
+  return render(request,'votacoes/exibirConselho.html',context)
+
+def exibirVoto(request,conselho_id,aluno_id):
+  context = {}
+  aluno =Aluno.objects.get(id=aluno_id)
+  conselho = Conselho.objects.get(id = conselho_id)
+  votacao = Votacao.objects.filter(conselho=conselho).filter(aluno=aluno)
+  conselho = Conselho.objects.get(id=conselho_id)
+  voto = request.user.votos_usuario.filter(votacao=votacao[0])
+
+  votos_usuario = request.user.votos_usuario.all()
+  for voto_usuario in votos_usuario:
+    if voto_usuario.votacao==votacao:
+      voto = voto_usuario
+  context['voto'] = voto
+
+  return render(request,'votacoes/voto.html',context)
+
 #erros
-def error404(request,exception):
+def error404(request,exception): 
   return render(request, '404.html', status=404)
 
 def error500(request):
