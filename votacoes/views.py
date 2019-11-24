@@ -237,18 +237,12 @@ def exibirVoto(request,conselho_id,aluno_id):
   context = {}
   aluno =Aluno.objects.get(id=aluno_id)
   conselho = Conselho.objects.get(id = conselho_id)
-  votacao = Votacao.objects.filter(conselho=conselho).filter(aluno=aluno)
-  conselho = Conselho.objects.get(id=conselho_id)
-  voto = request.user.votos_usuario.filter(votacao=votacao[0])
-
-  votos_usuario = request.user.votos_usuario.all()
-  for voto_usuario in votos_usuario:
-    if voto_usuario.votacao==votacao:
-      voto = voto_usuario
+  votacao = conselho.votacoes_conselho.get(aluno=aluno)
+  voto = votacao.votos_votacao.filter(usuario=request.user)[0]
+  context['aluno'] = aluno
   context['conselho'] = conselho
   context['voto'] = voto
-  context['aluno'] = aluno
-  context['votacao'] = votacao[0]
+  context['votacao'] = votacao
   return render(request,'votacoes/voto.html',context)
 
 def gerarHistoricoAluno(id_aluno):
@@ -263,13 +257,24 @@ def gerarHistoricoTurma(id_turma):
   historico = {}
   return historico
 
-def lancarVoto(request,conselho_id):
+def lancarVoto(request,voto_id):
   context = {}
-  conselho = Conselho.objects.get(id = conselho_id)
+  voto = Voto.objects.get(id=voto_id)
+  conselho = voto.votacao.conselho
   alunos_conselho = conselho.turma.alunos_turma.all()
+  acao = request.POST.get('botao')
+  if acao=='aprovar':
+    voto.situacao='Aprovar'
+  elif acao == 'reprovar':
+    voto.situacao='Reprovar'
+  elif acao == 'abster':
+    voto.situacao='Abster'
+  voto.save()
   context['conselho'] = conselho
   context['alunos_conselho'] = alunos_conselho
+
   return render(request,'votacoes/exibirConselho.html',context)
+
 #erros
 def error404(request,exception): 
   return render(request, '404.html', status=404)

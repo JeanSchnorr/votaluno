@@ -93,7 +93,7 @@ class UsuarioConselho(models.Model):
 class Votacao(models.Model):
     aluno = models.ForeignKey(Aluno, on_delete=models.CASCADE)
     situacao = models.BooleanField(default=False)
-    conselho = models.ForeignKey(Conselho, on_delete=models.CASCADE)
+    conselho = models.ForeignKey(Conselho, on_delete=models.CASCADE,related_name="votacoes_conselho")
 
     class Meta:
         verbose_name = 'Votação'
