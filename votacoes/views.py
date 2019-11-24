@@ -227,20 +227,17 @@ def encerrrarConselho(request):
 def exibirConselho(request, conselho_id):
   context = {}
   conselho = Conselho.objects.get(id = conselho_id)
-  alunos_conselho = conselho.turma.alunos_turma.all()
+  votacoes_conselho = conselho.votacoes_conselho.all()
   context['conselho'] = conselho
-  context['alunos_conselho'] = alunos_conselho
+  context['votacoes_conselho'] = votacoes_conselho
   return render(request,'votacoes/exibirConselho.html',context)
 
 #Views para Votacões
-def exibirVoto(request,conselho_id,aluno_id):
+def exibirVoto(request,votacao_id):
   context = {}
-  aluno =Aluno.objects.get(id=aluno_id)
-  conselho = Conselho.objects.get(id = conselho_id)
-  votacao = conselho.votacoes_conselho.get(aluno=aluno)
+  votacao = Votacao.objects.get(id=votacao_id)
   voto = votacao.votos_votacao.filter(usuario=request.user)[0]
-  context['aluno'] = aluno
-  context['conselho'] = conselho
+  context['conselho'] = votacao.conselho
   context['voto'] = voto
   context['votacao'] = votacao
   return render(request,'votacoes/voto.html',context)
@@ -270,10 +267,7 @@ def lancarVoto(request,voto_id):
   elif acao == 'abster':
     voto.situacao='Abster'
   voto.save()
-  context['conselho'] = conselho
-  context['alunos_conselho'] = alunos_conselho
-
-  return render(request,'votacoes/exibirConselho.html',context)
+  return exibirConselho(request, conselho.id)
 
 #erros
 def error404(request,exception): 

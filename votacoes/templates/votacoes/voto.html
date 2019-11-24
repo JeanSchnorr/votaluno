@@ -6,13 +6,13 @@
                 <h2 class="mt-1">Votar</h2>
                 <img
                     class="card-img-top img-fluid shadow m-1"
-                    src="{{ aluno.foto.url }}"
-                    alt="Foto do discente {{ avaliacao.aluno }}"
+                    src="{{ votacao.aluno.foto.url }}"
+                    alt="Foto do discente {{ votacao.aluno }}"
                 />
             </div>
             <div class="card-body">
-                <h4 class="card-title">{{ aluno }}</h4>
-                <p>Turma: {{ aluno.turma }}</p>
+                <h4 class="card-title">{{ votacao.aluno }}</h4>
+                <p>Turma: {{ votacao.aluno.turma }}</p>
             </div>
             <form
             width="100%"
@@ -27,9 +27,6 @@
                 <button name="botao" value="abster" class="btn btn-secondary m-2 w-50" type="submit">Abster</button>
             </div>
             </form>
-        </div>
-        <div class="col-sm">
-            <div class="col-sm" style="background-color: darkslategray; width: 250px; height: 250px;;"></div>
         </div>
     </div>
 </div>

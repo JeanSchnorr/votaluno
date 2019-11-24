@@ -1,12 +1,12 @@
 {% extends 'base.html' %} {% load staticfiles %} {% block body %}
-{% if alunos_conselho %}
+{% if votacoes_conselho %}
     <h2 class="mt-4">Conselho: {{conselho.turma}}</h2>
     <div class="row" style="padding-left: 16px;">
-        {% for aluno in alunos_conselho %}
-        <a href="{% url 'exibirVoto' conselho.id aluno.id %}" class="text-decoration-none text-muted"> 
+        {% for votacao in votacoes_conselho %}
+        <a href="{% url 'exibirVoto' votacao.id %}" class="text-decoration-none text-muted"> 
             <div class="col-sm card img-aluno img-thumbnail my-2 mr-2">
-                <img class="img-fluid rounded py-2" src="{{ aluno.foto.url }}" alt="imagem do aluno">
-                <p class="text-dark">{{aluno}}</p>
+                <img class="img-fluid rounded py-2" src="{{ votacao.aluno.foto.url }}" alt="imagem do aluno">
+                <p class="text-dark">{{votacao.aluno}}</p>
             </div>
         </a>
         {% endfor %}
