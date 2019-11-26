@@ -51,11 +51,12 @@
         />
         <nav>
           <a href="{% url 'home' %}">Página Inicial</a>
-          <a href="{% url 'avaliacoesTurmas' %}">Avaliacoes de Turmas</a>
-          <a href="{% url 'avaliacoesAlunos' %}">Avaliacoes de Alunos</a>
           {% if user.is_superuser %}
           <a href="{% url 'administracao' %}">Administração Rápida</a>
           <a href="{% url 'admin:index' %}">Gerenciar</a>
+          {% else %}
+          <a href="{% url 'avaliacoesTurmas' %}">Avaliacoes de Turmas</a>
+          <a href="{% url 'avaliacoesAlunos' %}">Avaliacoes de Alunos</a>
           {% endif %}
           <a href="{% url 'sair' %}">Sair</a>
         </nav>

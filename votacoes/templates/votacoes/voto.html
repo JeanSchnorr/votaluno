@@ -1,13 +1,34 @@
 {% extends 'base.html' %} {% load staticfiles %} {% block body %}
+{% if user.is_superuser %}
+<div class="my-4">
+    <h3>Votos calculados: {{votacao.aluno}}</h3>
+    <table class="table table-hover table-responsive">
+        <tbody>
+            {% if votos_usuarios %}
+            <tr>
+                <th scope="col">Usuário</th>
+                <th scope="col">Voto</th>
+            </tr>
+            {% for voto in votos_usuarios %}
+            <tr>
+                <th scope="row">{{ voto.usuario }}</th scope="row">
+                <td>{{ voto.situacao }}</td>
+            </tr>
+            {% endfor %}
+            {% endif %}
+        </tbody>
+    </table>
+</div>
+{% else %}
 <div class="row"></div>
     <div class="col-sm">
         <div class="card">
             <div class="w-100 text-center">
                 <h2 class="mt-1">Votar</h2>
                 <img
-                    class="card-img-top img-fluid shadow m-1"
-                    src="{{ votacao.aluno.foto.url }}"
-                    alt="Foto do discente {{ votacao.aluno }}"
+                class="card-img-top img-fluid shadow m-1"
+                src="{{ votacao.aluno.foto.url }}"
+                alt="Foto do discente {{ votacao.aluno }}"
                 />
             </div>
             <div class="card-body">
@@ -21,14 +42,14 @@
             action="{% url 'lancarVoto' voto.id %}"
             >
             {% csrf_token %}
-            <div class="d-flex flex-column align-items-center w-100">
-                <button name="botao" value="aprovar" class="btn btn-success m-2 w-50" onclick="">Aprovar</button>
-                <button name="botao" value="reprovar" class="btn btn-danger m-2 w-50" type="submit">Reprovar</button>
-                <button name="botao" value="abster" class="btn btn-secondary m-2 w-50" type="submit">Abster</button>
-            </div>
+                <div class="d-flex flex-column align-items-center w-100">
+                    <button name="botao" value="Aprovar" class="btn btn-success m-2 w-50" onclick="">Aprovar</button>
+                    <button name="botao" value="Reprovar" class="btn btn-danger m-2 w-50" type="submit">Reprovar</button>
+                    <button name="botao" value="Asbster" class="btn btn-secondary m-2 w-50" type="submit">Abster</button>
+                </div>
             </form>
         </div>
     </div>
 </div>
-
+{% endif %}
 {% endblock %}

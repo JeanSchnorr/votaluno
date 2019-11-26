@@ -228,18 +228,30 @@ def exibirConselho(request, conselho_id):
   context = {}
   conselho = Conselho.objects.get(id = conselho_id)
   votacoes_conselho = conselho.votacoes_conselho.all()
+  votos_usuario = request.user.votos_usuario.all()
+  votos_conselho = []
+  for votacao in votacoes_conselho:
+    for voto in votacao.votos_votacao.filter(usuario=request.user).filter(votado=False):
+      votos_conselho.append(voto)
+      
+  if request.user.is_superuser:
+    context['votacoes_conselho'] = votacoes_conselho
+
   context['conselho'] = conselho
-  context['votacoes_conselho'] = votacoes_conselho
+  context['votos_conselho'] = votos_conselho
   return render(request,'votacoes/exibirConselho.html',context)
 
 #Views para Votacões
 def exibirVoto(request,votacao_id):
   context = {}
   votacao = Votacao.objects.get(id=votacao_id)
-  voto = votacao.votos_votacao.filter(usuario=request.user)[0]
-  context['conselho'] = votacao.conselho
-  context['voto'] = voto
+  if request.user.is_superuser:
+    context['votos_usuarios'] = votacao.votos_votacao.all()
+  else:
+    context['voto'] = votacao.votos_votacao.filter(usuario=request.user).filter(votado=False)[0]
+    
   context['votacao'] = votacao
+  context['conselho'] = votacao.conselho
   return render(request,'votacoes/voto.html',context)
 
 def gerarHistoricoAluno(id_aluno):
@@ -259,13 +271,8 @@ def lancarVoto(request,voto_id):
   voto = Voto.objects.get(id=voto_id)
   conselho = voto.votacao.conselho
   alunos_conselho = conselho.turma.alunos_turma.all()
-  acao = request.POST.get('botao')
-  if acao=='aprovar':
-    voto.situacao='Aprovar'
-  elif acao == 'reprovar':
-    voto.situacao='Reprovar'
-  elif acao == 'abster':
-    voto.situacao='Abster'
+  voto.situacao = request.POST.get('botao')
+  voto.votado = True
   voto.save()
   return exibirConselho(request, conselho.id)
 

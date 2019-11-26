@@ -11,7 +11,11 @@
   </div>
   {% else %}
   <div class="text-center">
+    {% if user.is_superuser%}
+    <h2 class="mt-4">Nenhum conselho em andamento</h2>
+    {% else %}
     <h2 class="mt-4">Nenhum conselho para participar</h2>
+    {% endif %}
     <img class="pt-2 w-50"  src="{% static 'images/no-data.svg' %}" alt="ícone sem conselhos">
   </div>
 {% endif %}

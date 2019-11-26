@@ -1,17 +1,54 @@
 {% extends 'base.html' %} {% load staticfiles %} {% block body %}
-{% if votacoes_conselho %}
-    <h2 class="mt-4">Conselho: {{conselho.turma}}</h2>
-    <div class="row" style="padding-left: 16px;">
-        {% for votacao in votacoes_conselho %}
-        <a href="{% url 'exibirVoto' votacao.id %}" class="text-decoration-none text-muted"> 
-            <div class="col-sm card img-aluno img-thumbnail my-2 mr-2">
-                <img class="img-fluid rounded py-2" src="{{ votacao.aluno.foto.url }}" alt="imagem do aluno">
-                <p class="text-dark">{{votacao.aluno}}</p>
-            </div>
-        </a>
-        {% endfor %}
-    </div>
+<h2 class="mt-4">Conselho: {{conselho.turma}}</h2>
+{% if user.is_superuser %}
+    <table class="table table-hover table-responsive" style="min-width: 250px;">
+        <thead><h3>Votações em andamento </h3></thead>
+        <tbody>
+          <tr>
+            <th scope="col">Aluno</th>
+            <th scope="col">CPF</th>
+          </tr>
+          {% for votacao in votacoes_conselho %}
+          <tr
+            class="clickable-row"
+            data-href="{% url 'exibirVoto' votacao.id %}"
+          >
+            <th scope="row">{{ votacao.aluno }}</th>
+            <td>{{ votacao.aluno.cpf }}</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+    </table>
 {% else %}
-    <h2 class="mt-4 text-center">Nenhum aluno para exibir</h2>
+    {% if votos_conselho %}
+    <table class="table table-hover table-responsive" style="min-width: 250px;">
+        <thead><h3>Votações a serem feitas</h3></thead>
+        <tbody>
+          <tr>
+            <th scope="col">Aluno</th>
+            <th scope="col">CPF</th>
+          </tr>
+          {% for voto in votos_conselho %}
+          <tr
+            class="clickable-row"
+            data-href="{% url 'exibirVoto' voto.votacao.id %}"
+          >
+            <th scope="row">{{ voto.votacao.aluno }}</th>
+            <td>{{ voto.votacao.aluno.cpf }}</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+    </table>
+    {% else %}
+    <h2 class="mt-4 text-center">Votação completada</h2>
+    {% endif %}
 {% endif %}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.js"></script>
+<script>
+    jQuery(document).ready(function($) {
+        $(".clickable-row").click(function() {
+        window.location = $(this).data("href");
+        });
+    });
+</script>
 {% endblock %}
