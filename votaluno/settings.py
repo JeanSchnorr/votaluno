@@ -128,6 +128,5 @@ LOGIN_REDIRECT_URL = '/'
 import django_heroku
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 STATIC_URL = "/static/"
-STATICFILES_DIRS = [os.path.join(BASE_DIR,'votaluno/static')]
 
 django_heroku.settings(locals())
