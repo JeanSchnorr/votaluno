@@ -3,11 +3,13 @@
   <h2>Avaliar Aluno</h2>
   <div class="d-flex flex-column">
     <div class="card">
-      <img
-        class="card-img-top img-fluid"
-        src="{{ avaliacao.aluno.foto.url }}"
-        alt="Foto do discente {{ avaliacao.aluno }}"
-      />
+      <div class="d-flex align-items-center">
+        <img
+          class="card-img-top img-fluid"
+          src="{{ avaliacao.aluno.foto.url }}"
+          alt="Foto do discente {{ avaliacao.aluno }}"
+        />
+      </div>
       <div class="card-body">
         <h4 class="card-title">{{ avaliacao.aluno }}</h4>
         <p>Disciplina: {{ avaliacao.oferta_disciplina.disciplina }}</p>
