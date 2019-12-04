@@ -1,4 +1,4 @@
-{% extends 'base.html' %} {% load staticfiles %} {% block body %}
+{% extends 'base.html' %} {% load static %} {% block body %}
 {% if user.is_superuser %}
 <div class="my-4">
     <h3>Votos calculados: {{votacao.aluno}}</h3>
