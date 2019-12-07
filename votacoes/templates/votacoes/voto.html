@@ -2,23 +2,23 @@
 {% if user.is_superuser %}
 <div class="my-4">
 <div>
-        <h4>Resultado até o momento:</h4>
-        <table class="table table-hover table-responsive">
-            <tbody>
-                <tr>
-                    <th scope="col">Aprovar</th>
-                    <th scope="col">Reprovar</th>
-                    <th scope="col">Abster</th>
-                </tr>
-                <tr>
-                    <td>{{ votos_aprovar }}</td>
-                    <td>{{ votos_reprovar }}</td>
-                    <td>{{ votos_abster }}</td>
-                </tr>
-            </tbody>
-        </table> 
+    <h3>Resultado até o momento:</h3>
+    <table class="table table-hover table-responsive">
+        <tbody>
+            <tr>
+                <th scope="col">Aprovar</th>
+                <th scope="col">Reprovar</th>
+                <th scope="col">Abster</th>
+            </tr>
+            <tr>
+                <td>{{ votos_aprovar }}</td>
+                <td>{{ votos_reprovar }}</td>
+                <td>{{ votos_abster }}</td>
+            </tr>
+        </tbody>
+    </table> 
     </div>
-    <h3>Votos calculados: {{votacao.aluno}}</h3>
+    <h4>Votos calculados: {{votacao.aluno}}</h4>
     <table class="table table-hover table-responsive">
         <tbody>
             {% if votos_usuarios %}
