@@ -248,6 +248,7 @@ def exibirVoto(request,votacao_id):
   if request.user.is_superuser:
     context['votos_aprovar'] = len(votacao.votos_votacao.filter(votado=True).filter(situacao="Aprovar"))
     context['votos_reprovar'] = len(votacao.votos_votacao.filter(votado=True).filter(situacao="Reprovar"))
+    context['votos_abster'] = len(votacao.votos_votacao.filter(votado=True).filter(situacao="Abster"))
     context['votos_usuarios'] = votacao.votos_votacao.filter(votado=True)
   else:
     context['voto'] = votacao.votos_votacao.filter(usuario=request.user).filter(votado=False)[0]
