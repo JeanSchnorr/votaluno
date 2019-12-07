@@ -246,10 +246,12 @@ def exibirVoto(request,votacao_id):
   context = {}
   votacao = Votacao.objects.get(id=votacao_id)
   if request.user.is_superuser:
-    context['votos_usuarios'] = votacao.votos_votacao.all()
+    context['votos_aprovar'] = len(votacao.votos_votacao.filter(votado=True).filter(situacao="Aprovar"))
+    context['votos_reprovar'] = len(votacao.votos_votacao.filter(votado=True).filter(situacao="Reprovar"))
+    context['votos_usuarios'] = votacao.votos_votacao.filter(votado=True)
   else:
     context['voto'] = votacao.votos_votacao.filter(usuario=request.user).filter(votado=False)[0]
-    
+  
   context['votacao'] = votacao
   context['conselho'] = votacao.conselho
   return render(request,'votacoes/voto.html',context)

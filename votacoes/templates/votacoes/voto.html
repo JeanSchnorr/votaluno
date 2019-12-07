@@ -17,7 +17,22 @@
             {% endfor %}
             {% endif %}
         </tbody>
-    </table>
+    </table> 
+    <div>
+        <h4>Resultado até o momento:</h4>
+        <table class="table table-hover table-responsive">
+            <tbody>
+                <tr>
+                    <th scope="col">Aprovar</th>
+                    <th scope="col">Reprovar</th>
+                </tr>
+                <tr>
+                    <td>{{ votos_aprovar }}</td>
+                    <td>{{ votos_reprovar }}</td>
+                </tr>
+            </tbody>
+        </table> 
+    </div>
 </div>
 {% else %}
 <div class="row"></div>
