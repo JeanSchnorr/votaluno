@@ -7,7 +7,7 @@
     <form class="card" method="POST" action="{% url 'gerarAvaliacoesTurma' %}">
       {% csrf_token %}
       <div class="m-3">
-        <select class="form-control" name="turma" >
+        <select class="form-control" name="turma" required>
           <option hidden>Selecione uma Turma</option>
           {% if turmas %} 
           {% for turma in turmas %}
@@ -16,7 +16,7 @@
           <option disabled>Não há turmas disponíveis</option>
           {% endif %}
         </select>
-        <select class="form-control mt-2" name="bimestre" >
+        <select class="form-control mt-2" name="bimestre" required>
           <option hidden>Selecione um bimestre</option>
           <option value="1">1</option>
           <option value="2">2</option>
@@ -39,7 +39,7 @@
     <form class="card" method="POST" action="{% url 'gerarConselho' %}">
       {% csrf_token %}
       <div class="m-3">
-        <select class="form-control" name="turma">
+        <select class="form-control" name="turma" required>
           <option hidden>Selecione uma Turma</option>
           {% if turmas %} {% for turma in turmas %}
           <option value="{{ turma.id }}">{{ turma }}</option>
@@ -48,7 +48,7 @@
           {% endif %}
         </select>
         <label for="data" class="col-form-label" name="data">Data</label>
-        <input class="form-control" type="date" id="data" name="data" />
+        <input class="form-control" type="date" id="data" name="data" required/>
         <div class="d-flex justify-content-center mt-3">
           <button class="btn btn-info" type="submit">Gerar</button>
         </div>
@@ -60,7 +60,7 @@
     <form method="POST" class="card" action="{% url 'iniciarConselho' %}">
       {% csrf_token %}
       <div class="m-3">
-        <select class="form-control" name="conselho">
+        <select class="form-control" name="conselho" required>
           <option hidden>Selecione um Conselho</option>
           {% if conselhosFechados %} {% for conselho in conselhosFechados %}
           <option value="{{ conselho.id }}">{{ conselho }}</option>
@@ -79,7 +79,7 @@
     <form method="POST" class="card" action="{% url 'encerrrarConselho' %}">
       {% csrf_token %}
       <div class="m-3">
-        <select class="form-control" name="select">
+        <select class="form-control" name="select" required>
           <option hidden>Selecione um Conselho</option>
           {% if conselhosAbertos %} {% for cons in conselhosAbertos %}
           <option value="{{ cons.id }}">{{ cons }}</option>
