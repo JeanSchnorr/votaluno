@@ -79,7 +79,7 @@
     <form method="POST" class="card" action="{% url 'encerrrarConselho' %}">
       {% csrf_token %}
       <div class="m-3">
-        <select class="form-control" name="select" required>
+        <select require class="form-control" name="select" d>
           <option hidden>Selecione um Conselho</option>
           {% if conselhosAbertos %} {% for cons in conselhosAbertos %}
           <option value="{{ cons.id }}">{{ cons }}</option>
