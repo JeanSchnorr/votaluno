@@ -8,16 +8,16 @@
       {% csrf_token %}
       <div class="m-3">
         <select class="form-control" name="turma" required>
-          <option hidden>Selecione uma Turma</option>
+          <option value="" hidden>Selecione uma Turma</option>
           {% if turmas %} 
           {% for turma in turmas %}
           <option value="{{ turma.id }}">{{ turma }}</option>
           {% endfor %} {% else %}
-          <option disabled>Não há turmas disponíveis</option>
+          <option value="" disabled>Não há turmas disponíveis</option>
           {% endif %}
         </select>
         <select class="form-control mt-2" name="bimestre" required>
-          <option hidden>Selecione um bimestre</option>
+          <option value="" hidden>Selecione um bimestre</option>
           <option value="1">1</option>
           <option value="2">2</option>
           <option value="3">3</option>
@@ -40,7 +40,7 @@
       {% csrf_token %}
       <div class="m-3">
         <select class="form-control" name="turma" required>
-          <option hidden>Selecione uma Turma</option>
+          <option value="" hidden>Selecione uma Turma</option>
           {% if turmas %} {% for turma in turmas %}
           <option value="{{ turma.id }}">{{ turma }}</option>
           {% endfor %} {% else %}
@@ -61,7 +61,7 @@
       {% csrf_token %}
       <div class="m-3">
         <select class="form-control" name="conselho" required>
-          <option hidden>Selecione um Conselho</option>
+          <option value="" hidden>Selecione um Conselho</option>
           {% if conselhosFechados %} {% for conselho in conselhosFechados %}
           <option value="{{ conselho.id }}">{{ conselho }}</option>
           {% endfor %} {% else %}
