@@ -80,7 +80,7 @@
       {% csrf_token %}
       <div class="m-3">
         <select required class="form-control" name="select">
-          <option hidden>Selecione um Conselho</option>
+          <option value="" hidden>Selecione um Conselho</option>
           {% if conselhosAbertos %} {% for cons in conselhosAbertos %}
           <option value="{{ cons.id }}">{{ cons }}</option>
           {% endfor %} {% else %}
