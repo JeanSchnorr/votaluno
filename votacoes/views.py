@@ -285,3 +285,6 @@ def error404(request,exception):
 
 def error500(request):
   return render(request, '500.html', status=500)
+ 
+def faq(request):
+  return render(request, 'faq.html')

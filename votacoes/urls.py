@@ -21,4 +21,5 @@ urlpatterns = [
     path('exibirConselho/<int:conselho_id>', views.exibirConselho,  name='exibirConselho'),
     path('votar/<int:votacao_id>', views.exibirVoto,  name='exibirVoto'),
     path('votar/lancarVoto/<int:voto_id>', views.lancarVoto,  name='lancarVoto'),
+    path('faq', views.faq,  name='faq'),
 ]
