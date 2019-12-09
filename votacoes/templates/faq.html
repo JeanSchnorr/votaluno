@@ -1,3 +1,13 @@
 {% extends 'base.html' %} {% load static %} {% block body %}
-<h3 class="mt-4">Precisa de ajuda? Vamos te dar uma mãozinha!</h3>
+<h3 class="mt-4">Precisa de ajuda? Vamos te dar uma mãozinha {{user}}!</h3>
+{% if user.is_superuser %}
+<div class="w-100">
+    <h4>Página Inicial</h4>
+    <p>Em sua página inicial serão mostrados todos os conselhos em andamento, assim fica muito mais fácil de gerenciá-los!</p>
+    <p>Na aba de navegação estarão todas as funcionalidades que você irá utilizar.</p>
+    <img class="img-fluid" src="{% static 'faq/admin_home.png' %}" alt="Página inicial do Administrador">
+</div>        
+{% else %}
+
+{% endif %}
 {% endblock %}
