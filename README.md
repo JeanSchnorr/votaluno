@@ -41,6 +41,12 @@ Em seguida faça o deploy e pronto
 
 > ```git push -f heroku master```
 
+###Como funciona o banco de dados?
+
+O banco de dados pode ser visualizado da seguinte maneira:
+
+
+
 ## Licença
 
 A licença de uso escolhida para o projeto foi a MIT e pode ser encontrada [**aqui**](https://github.com/JeanSchnorr/votaluno/blob/master/LICENSE).
