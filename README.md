@@ -30,11 +30,17 @@ Para o desenvolvimento do votAluno foi utilizado o framework Django e o deploy n
 Antes de tudo configure seu ambiente Django com a plataforma Heroku, para isso siga este tutorial [**aqui**](https://devcenter.heroku.com/articles/deploying-python).
 
 Após isso logue-se faça a criação de um usuário administrador para o sistema:
->heroku run python manage.py createsuperuser
+
+>```heroku run python manage.py createsuperuser```
+
 Em seguida faça o deploy e pronto
-> git add .
-> git commit -m "realizando deploy"
-> git push -f heroku master
+
+> ```git add . ```
+
+> ```git commit -m "realizando deploy"```
+
+> ```git push -f heroku master```
+
 ## Licença
 
 A licença de uso escolhida para o projeto foi a MIT e pode ser encontrada [**aqui**](https://github.com/JeanSchnorr/votaluno/blob/master/LICENSE).
