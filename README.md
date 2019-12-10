@@ -41,7 +41,7 @@ Em seguida faça o deploy e pronto
 
 > ```git push -f heroku master```
 
-###Como funciona o banco de dados?
+### Como funciona o banco de dados?
 
 O banco de dados pode ser visualizado da seguinte maneira:
 
