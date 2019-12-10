@@ -10,7 +10,7 @@
 <div class="w-100 pt-3">
     <h4>Administração Rápida</h4>
     <p>Aqui foram reunidas as ferramentas que você como administrador do sistema irá utilizar para gerar as avaliações que serão realizados pelos usuários além de gerar, iniciar e encerrar os conselhos</p>
-    <img style="max-width: 90%;" class="img-fluid" src="{% static 'faq/admin_admRapida.PNG' %}" alt="Página inicial do Administrador">
+    <img style="max-width: 90%;" class="img-fluid" src="{% static 'faq/admin_admRapida.PNG' %}" alt="Página de Administração Rápida do Administrador">
     <h5 class=" pt-2">Para gerar as avaliações de uma turma:</h5>
     <p>Selecione uma turma no primeiro campo, e então defina o bimestre que esta avaliação pertencerá e clique em "Gerar";</p>
     <p>A partir daí o sistema irá criar as avaliações de todos os docentes que ministram as aulas que esta turma possui.</p>
@@ -24,9 +24,14 @@
 <div class="w-100">
     <h4>Gerenciamento Avançado</h4>
     <p>Como administrador você pode realizar um gerenciamento mais preciso, tendo como modificar todos os registros realizados no sistema.</p>
-    <img style="max-width: 90%;" class="img-fluid" src="{% static 'faq/admin_gerenciar.PNG' %}" alt="Página inicial do Administrador">
+    <img style="max-width: 90%;" class="img-fluid" src="{% static 'faq/admin_gerenciar.PNG' %}" alt="Página de gerenciamento avançado do Administrador">
 </div> 
 {% else %}
-
+<div class="w-100">
+    <h4>Página Inicial </h4>
+    <p>Em sua página inicial serão mostrados todos os conselhos abertos em que você está participando.</p>
+    <p>Na aba de navegação estarão todas as funcionalidades que você irá utilizar.</p>
+    <img style="max-width: 90%;" class="img-fluid" src="{% static 'faq/usuario_home.PNG' %}" alt="Página inicial do Usuário">
+</div> 
 {% endif %}
 {% endblock %}
