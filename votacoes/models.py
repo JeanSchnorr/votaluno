@@ -113,5 +113,6 @@ class Voto(models.Model):
     usuario = models.ForeignKey(User, on_delete=models.CASCADE, related_name="votos_usuario")
     situacao = models.CharField(max_length=8, choices=SITUACAO_CHOICES, default='Abster')
     votado = models.BooleanField(default=False)
+
     def __str__(self):
         return f'{self.usuario} para {self.votacao}'
