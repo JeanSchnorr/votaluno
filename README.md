@@ -1,43 +1,52 @@
-# **Instalando a virtualenv**
-A instalação de uma virtualenv é feita utilizando o pip, gerenciador de pacotes do Python. 
-Após instalar o pip, utilizamos o comando abaixo para instalar o pacote virtualenv em nosso computador:
+# votAluno
 
-> **pip install virtualenv**
+## Sobre o projeto
 
-Feito isso, o pacote estará instalado e pronto para ser utilizado. Agora já podemos criar e gerenciar nossos ambientes virtuais.
+Este é um sistema desenvolvido para ser entregue como TCC no curso Tecnólogo em Análise e Desenvolvimento de Sistemas ofertado pelo Instituto Federal de Rondônia - IFRO campus Vilhena.
 
-# **Criando uma nova virtualenv**
+### O que é?
 
-O processo de criação de uma virtualenv é bastante simples e pode ser feito utilizando um único comando, como podemos ver abaixo:
+O votAluno é um sistema de votação voltado para agilizar a realização dos conselhos de classe, automatizando os lançamentos dos votos e possuindo função de realizar avaliações bimestrais dos alunos, tornando as realizações dos conselhos mais fáceis e simples para os servidores das instituições.
 
-> **virtualenv nome_da_virtualenv**
+### Funcionalidades
 
-O mais comum é criar a virtualenv na raiz do projeto que ela irá pertencer. Isso permite uma organização maior das virtualenvs que possuímos em nosso computador:
+ - Gerenciar os perfis dos usuários;
+ - Gerenciar os cadastros de  Disciplinas, Cursos, Turmas e Alunos;
+ - Gerenciar as Avaliações realizadas pelos usuários;
+ - Gerenciar as Votações e Votos dos conselhos;
 
-Com isso, criamos a virtualenv do projeto chamada “venv”. É ela quem vai comportar todos os pacotes necessários para a execução do projeto.
+### Sobre o desenvolvimento
 
-# **Ativando uma virtualenv**
-Após criar uma virtualenv, precisamos ativá-la para que possamos instalar os pacotes necessários do projeto. Para isso, utilizamos o seguinte comando:
+Para o desenvolvimento do votAluno foi utilizado o framework Django e o deploy na plataforma Heroku.
 
-> **source nome_da_virtualenv/bin/activate** (Linux ou macOS)
+## Getting Started
 
-ou
+### Clonando o projeto
 
-> **nome_da_virtualenv\Scripts\activate** (Windows)
+> git clone https://github.com/JeanSchnorr/votaluno.git
 
-O comando acima irá ativar a virutalenv e teremos um retorno similar ao ilustrado abaixo:
+### Executando o projeto
+
+Antes de tudo configure seu ambiente Django com a plataforma Heroku, para isso siga este tutorial [**aqui**](https://devcenter.heroku.com/articles/deploying-python).
+
+Após isso logue-se faça a criação de um usuário administrador para o sistema:
+
+>```heroku run python manage.py createsuperuser```
+
+Em seguida faça o deploy e pronto
+
+> ```git add . ```
+
+> ```git commit -m "realizando deploy"```
+
+> ```git push -f heroku master```
+
+###Como funciona o banco de dados?
+
+O banco de dados pode ser visualizado da seguinte maneira:
 
 
-Note que o nome da virtualenv, agora, é exibido antes do caminho do diretório em que estamos. Isso indica que a virtualenv foi ativada com sucesso.
 
-# **Desativando uma virtualenv**
-Para desativar uma virtualenv utilizamos o comando **_desactivate_**.
+## Licença
 
-# **Instalando pacotes**
-Com a virtualenv ativada, podemos instalar os pacotes necessários do projeto utilizando o próprio PIP.
-Agora, instalamos o pacote Django, em sua versão mais atual, na virtualenv do projeto “projeto_python”.
-Agora, se precisarmos instalar uma outra versão do Django em outro projeto, bastaria criar uma nova virtualenv e realizar o mesmo processo.
-
-### Essas e outras dicas eu encontrei no site [**_TreinaWeb_**](https://www.treinaweb.com.br/blog/criando-ambientes-virtuais-para-projetos-python-com-o-virtualenv/)
-
-### [Aprendendo Django](https://data-flair.training/blogs/django-architecture/)
+A licença de uso escolhida para o projeto foi a MIT e pode ser encontrada [**aqui**](https://github.com/JeanSchnorr/votaluno/blob/master/LICENSE).
