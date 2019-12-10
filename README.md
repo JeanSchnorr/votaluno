@@ -1,4 +1,4 @@
-# votAluno
+![alt text](https://github.com/JeanSchnorr/votaluno/blob/master/usuarios/static/images/logo-votaluno-verde.png "Logo votAluno"
 
 ## Sobre o projeto
 
