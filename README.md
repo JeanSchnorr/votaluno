@@ -1,10 +1,8 @@
-# **Instalando a virtualenv**
-A instalação de uma virtualenv é feita utilizando o pip, gerenciador de pacotes do Python. 
-Após instalar o pip, utilizamos o comando abaixo para instalar o pacote virtualenv em nosso computador:
+# **Bem Vindo ao votAluno!**
+Nesta sessão você poderá entender o que está por trás deste sistema.
 
-> **pip install virtualenv**
-
-Feito isso, o pacote estará instalado e pronto para ser utilizado. Agora já podemos criar e gerenciar nossos ambientes virtuais.
+**Banco de Dados**
+Como banco de dados foi escolhido o SQLite, pois é o mais versátil para se utilizar com o framework Django. Mas Também é possível migrá-lo para outros tipos de banco, como o PostgreSQL.
 
 # **Criando uma nova virtualenv**
 
