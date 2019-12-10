@@ -45,6 +45,7 @@ Em seguida faça o deploy e pronto
 
 O banco de dados pode ser visualizado da seguinte maneira:
 
+![alt text](https://github.com/JeanSchnorr/votaluno/blob/master/documents/diagrama%20de%20classe.png "Class diagram")
 
 
 ## Licença
