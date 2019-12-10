@@ -1,7 +1,7 @@
 # **Bem Vindo ao votAluno!**
 Nesta sessão você poderá entender o que está por trás deste sistema.
 
-# **Banco de Dados**
+## **Banco de Dados**
 Como banco de dados foi escolhido o SQLite, pois é o mais versátil para se utilizar com o framework Django. Mas Também é possível migrá-lo para outros tipos de banco, como o PostgreSQL.
 
 # **Criando uma nova virtualenv**
